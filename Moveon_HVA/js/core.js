@@ -15400,9 +15400,9 @@ function hae_reservilaisen_tyojaksot(re_reservilainen_id) {
 			"<td class='teksti_keskella'><input id='reservi_loppu_pvm_lisaysrivi_" +
 			re_reservilainen_id +
 			"' class='pvm_kentta' readonly /></td>" +
-			"<td class='teksti_keskella'><select id='reservi_tyomaara_lisaysrivi_" +
+			"<td class='teksti_keskella'><input id='reservi_tyomaara_lisaysrivi_" +
 			re_reservilainen_id +
-			"' title='Työmäärä %' class='valintakentta reservi_valinta'></select></td>" +
+			"' title='Työmäärä %' /></td>" +
 			"<td class='teksti_keskella'><select id='reservi_reservitausta_lisaysrivi_" +
 			re_reservilainen_id +
 			"' title='Reservitausta' class='valintakentta reservi_valinta'></select></td>" +
@@ -15525,11 +15525,7 @@ function hae_reservilaisen_tyojaksot(re_reservilainen_id) {
 		},
 	});
 
-	$("#reservi_tyomaara_lisaysrivi_" + re_reservilainen_id).html("");
-	$("#reservi_tyomaara_lisaysrivi_" + re_reservilainen_id).append(
-		reservi_tyomaara_valinnat
-	);
-	$("#reservi_tyomaara_lisaysrivi_" + re_reservilainen_id).val(0);
+	$("#reservi_tyomaara_lisaysrivi_" + re_reservilainen_id).val("");
 	$("#reservi_tyomaara_lisaysrivi_" + re_reservilainen_id).change(function () {
 		if (
 			!$(
@@ -15967,7 +15963,7 @@ function reservi_tallenna_tyojakso(tj_reservilainen_id, tj_tyojakso_id) {
 	let tj_osasto_id = "";
 	let tj_alku_pvm = "";
 	let tj_loppu_pvm = "";
-	let tj_tyomaara_id = "";
+	let tj_tyomaara = "";
 	let tj_reservitausta_id = "";
 	let tj_kommentti = "";
 
@@ -15988,7 +15984,7 @@ function reservi_tallenna_tyojakso(tj_reservilainen_id, tj_tyojakso_id) {
 		tyojakso_loppu_pvm = $(
 			"#reservi_loppu_pvm_lisaysrivi_" + tj_reservilainen_id
 		).datepicker("getDate");
-		tj_tyomaara_id = $(
+		tj_tyomaara = $(
 			"#reservi_tyomaara_lisaysrivi_" + tj_reservilainen_id
 		).val();
 		tj_reservitausta_id = $(
@@ -16007,7 +16003,7 @@ function reservi_tallenna_tyojakso(tj_reservilainen_id, tj_tyojakso_id) {
 		tyojakso_loppu_pvm = $("#reservi_loppu_pvm_" + tj_tyojakso_id).datepicker(
 			"getDate"
 		);
-		tj_tyomaara_id = $("#reservi_tyomaara_" + tj_tyojakso_id).val();
+		tj_tyomaara = $("#reservi_tyomaara_" + tj_tyojakso_id).val();
 		tj_reservitausta_id = $("#reservi_reservitausta_" + tj_tyojakso_id).val();
 		tj_kommentti = $("#reservi_kommentti_" + tj_tyojakso_id).val();
 	}
@@ -16016,7 +16012,8 @@ function reservi_tallenna_tyojakso(tj_reservilainen_id, tj_tyojakso_id) {
 		tj_osasto_id == 0 ||
 		tj_alku_pvm == "" ||
 		tj_loppu_pvm == "" ||
-		tj_tyomaara_id == 0 ||
+		isNaN(parseFloat(tj_ty)) ||
+		tj_tyomaara <= 0 ||
 		tj_reservitausta_id == 0
 	) {
 		alert("Tarkista tiedot");
@@ -16031,7 +16028,7 @@ function reservi_tallenna_tyojakso(tj_reservilainen_id, tj_tyojakso_id) {
 			osasto_id: tj_osasto_id,
 			alku_pvm: tj_alku_pvm,
 			loppu_pvm: tj_loppu_pvm,
-			tyomaara_id: tj_tyomaara_id,
+			tyomaara: tj_tyomaara,
 			reservitausta_id: tj_reservitausta_id,
 			kommentti: tj_kommentti,
 		},

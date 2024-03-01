@@ -194,7 +194,7 @@ if (
 				$hp_kustannukset = 0;
 				$h_tyojaksot = array();
 
-				$sql = "SELECT CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END AS aloitus, CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END AS lopetus, DATEDIFF(CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END,CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END) AS h_p_maara, (SELECT prosentti FROM tyomaara WHERE id = tyomaara_id) AS tyomaara, reservilainen_id FROM tyojakso WHERE (alku_pvm <= :loppupvm AND loppu_pvm >= :alkupvm) AND reservilainen_id IN(" . $r_hoitaja_idt . ") AND osasto_id = :osasto_id";
+				$sql = "SELECT CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END AS aloitus, CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END AS lopetus, DATEDIFF(CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END,CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END) AS h_p_maara, tyomaara, reservilainen_id FROM tyojakso WHERE (alku_pvm <= :loppupvm AND loppu_pvm >= :alkupvm) AND reservilainen_id IN(" . $r_hoitaja_idt . ") AND osasto_id = :osasto_id";
 				$values = $con->prepare($sql);
 				$values->bindParam(':alkupvm', $alkupvm);
 				$values->bindParam(':loppupvm', $loppupvm);

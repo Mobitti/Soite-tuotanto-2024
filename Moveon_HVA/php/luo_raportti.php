@@ -1374,7 +1374,7 @@ if (
 				$reservitausta_rivi['selite'] = $row['numero'] . " = " . $row['selite'];
 
 				//Kaikki hoitajien päivät
-				$sql = "SELECT DATEDIFF(CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END,CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END) AS h_p_maara, (SELECT prosentti FROM tyomaara WHERE id = tyomaara_id) AS tyomaara FROM tyojakso WHERE (alku_pvm <= :loppupvm AND loppu_pvm >= :alkupvm) AND reservilainen_id IN(" . $henkilo_idt . ")" . $osastovalintaWhere . " AND reservitausta_id = :reservitausta_id";
+				$sql = "SELECT DATEDIFF(CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END,CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END) AS h_p_maara, tyomaara FROM tyojakso WHERE (alku_pvm <= :loppupvm AND loppu_pvm >= :alkupvm) AND reservilainen_id IN(" . $henkilo_idt . ")" . $osastovalintaWhere . " AND reservitausta_id = :reservitausta_id";
 				$values = $con->prepare($sql);
 				$values->bindParam(':alkupvm', $alkupvm);
 				$values->bindParam(':loppupvm', $loppupvm);
@@ -1413,7 +1413,7 @@ if (
 				$hp_kustannukset = 0;
 				$h_tyojaksot = array();
 
-				$sql = "SELECT CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END AS aloitus, CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END AS lopetus, DATEDIFF(CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END,CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END) AS h_p_maara, (SELECT prosentti FROM tyomaara WHERE id = tyomaara_id) AS tyomaara, reservilainen_id FROM tyojakso WHERE (alku_pvm <= :loppupvm AND loppu_pvm >= :alkupvm) AND reservilainen_id IN(" . $henkilo_idt . ") AND osasto_id = :osasto_id AND reservitausta_id IN(" . $tausta_idt . ")";
+				$sql = "SELECT CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END AS aloitus, CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END AS lopetus, DATEDIFF(CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END,CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END) AS h_p_maara, tyomaara, reservilainen_id FROM tyojakso WHERE (alku_pvm <= :loppupvm AND loppu_pvm >= :alkupvm) AND reservilainen_id IN(" . $henkilo_idt . ") AND osasto_id = :osasto_id AND reservitausta_id IN(" . $tausta_idt . ")";
 				$values = $con->prepare($sql);
 				$values->bindParam(':alkupvm', $alkupvm);
 				$values->bindParam(':loppupvm', $loppupvm);
@@ -1654,7 +1654,7 @@ if (
 				$kasiteltava_loppu_pvm = $kasiteltava_vuosi . "-" . $kasiteltava_kuukausi_arvo . "-" . $kasiteltava_pvm->format("t");
 				$loytyi = false;
 
-				$sql = "SELECT reservitausta_id, DATEDIFF(CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END,CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END) AS p_maara, (SELECT prosentti FROM tyomaara WHERE id = tyomaara_id) AS tyomaara FROM tyojakso WHERE (alku_pvm <= :loppupvm AND loppu_pvm >= :alkupvm) AND reservilainen_id IN(" . $henkilo_idt . ") 
+				$sql = "SELECT reservitausta_id, DATEDIFF(CASE WHEN (loppu_pvm < :loppupvm) THEN loppu_pvm ELSE :loppupvm END,CASE WHEN (alku_pvm > :alkupvm) THEN alku_pvm ELSE :alkupvm END) AS p_maara, tyomaara FROM tyojakso WHERE (alku_pvm <= :loppupvm AND loppu_pvm >= :alkupvm) AND reservilainen_id IN(" . $henkilo_idt . ") 
 				AND osasto_id IN (" . $osastojen_idt . ") AND reservitausta_id IN(SELECT id FROM reservitausta) ORDER BY (SELECT numero FROM reservitausta WHERE id = reservitausta_id) ASC, alku_pvm ASC";
 				$values = $con->prepare($sql);
 				$values->bindParam(':alkupvm', $kasiteltava_alku_pvm);
@@ -1909,7 +1909,7 @@ if (
 						}
 
 						if (!($tyojakso_alku_tyyppi == 'L' && $tyojakso_loppu_tyyppi == 'A')) {
-							$sql = "SELECT (SELECT prosentti FROM tyomaara WHERE id = tyomaara_id) AS tyomaara_prosentti FROM tyojakso WHERE reservilainen_id = :reservilainen_id AND (alku_pvm <= :loppu_pvm AND loppu_pvm >= :alku_pvm)";
+							$sql = "SELECT tyomaara AS tyomaara_prosentti FROM tyojakso WHERE reservilainen_id = :reservilainen_id AND (alku_pvm <= :loppu_pvm AND loppu_pvm >= :alku_pvm)";
 							$values = $con->prepare($sql);
 							$values->bindParam(':alku_pvm', $tyojakso_alku_pvm);
 							$values->bindParam(':loppu_pvm', $tyojakso_loppu_pvm);
