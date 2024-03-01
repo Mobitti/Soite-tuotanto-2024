@@ -1,0 +1,2946 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	text-align: center;
+	overflow: hidden;
+	background: orange;
+}
+
+.dhx_cal_navline .dhx_cal_date {
+	top: 5px !important;
+}
+
+.kehys {
+	position: absolute;
+	top: 51px;
+	left: 0px;
+	margin: 0px;
+	bottom: 51px;
+	padding: 0px;
+	width: 100%;
+	display: none;
+}
+
+.rivikehys {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.ruutukentta {
+	width: 150px;
+}
+
+.ruutukentta_pitka {
+	width: 275px;
+	vertical-align: top;
+}
+
+.ruututeksti {
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 50px;
+	width: 75px;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.ruututeksti_oikea {
+	display: inline-block;
+	font-size: 20px;
+}
+
+.ruututeksti_pitka {
+	margin-right: 50px;
+	width: 150px;
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.ruututeksti_pitka_oikea {
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 100px;
+	width: 150px;
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.kuvakealue {
+	display: inline-block;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	cursor: pointer;
+	margin: 0 10px;
+	padding: 20px;
+}
+
+.kuvakealue img {
+	display: block;
+	margin-top: 10px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	height: 75px;
+	width: 75px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.kuvakealue span {
+	display: block;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.ei_valittavissa {
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+	cursor: not-allowed;
+}
+
+.piilotettu {
+	display: none !important;
+}
+
+.piilonakyvissa {
+	visibility: hidden;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	float: none;
+}
+
+.ui-dialog {
+	z-index: 1000;
+}
+
+.vasenpainike {
+	float: left;
+}
+
+.oikeapainike {
+	float: right;
+}
+
+.lyhyt {
+	width: 75px;
+}
+
+.pitka {
+	width: 175px;
+}
+
+.pitka_teksti {
+	width: 250px;
+}
+
+.kotiosasto_tausta {
+	background-color: #90ff7c;
+}
+
+.vuoromuutosastotkentta {
+	width: 250px;
+}
+
+.vuoroosastokentta {
+	width: 250px;
+}
+
+.vuorotaustakentta {
+	width: 325px;
+}
+
+.vuoro_osastovalinta {
+	margin-left: 5px;
+	width: 120px;
+}
+
+.vuoro_raporttiosastovalinta {
+	width: 120px;
+}
+
+.vuoro_taustavalinta {
+	width: 120px;
+}
+
+.vuoro_taustakentta {
+	display: inline-block;
+	margin-left: 10px;
+	width: 120px;
+}
+
+.vuorolukituskuvake {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	padding: 5px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.vuorolukituskuvake_lukittu {
+	background-image: url("imgs/lukittu.png");
+	background-size: cover;
+}
+
+.vuorolukituskuvake_avattu {
+	background-image: url("imgs/avattu.png");
+	background-size: cover;
+}
+
+.valintakentta {
+	background: #c0eafc url("images/ui-bg_highlight-soft_100_c0eafc_1x100.png")
+		repeat-x scroll 50% 50%;
+	border: 1px solid #000;
+	color: #000;
+	font-weight: bold;
+	border-radius: 6px;
+	padding: 2px;
+	max-width: 280px;
+	min-width: 105px;
+}
+
+.navpainike {
+	height: 25px;
+	font-weight: bold;
+	color: black;
+	background-color: #deedf7;
+	text-align: left;
+	padding: 5px 15px;
+	text-decoration: none;
+	cursor: pointer;
+	border-right: 1px solid black;
+}
+
+.navpainike_selected {
+	height: 25px;
+	font-weight: bold;
+	color: black;
+	background-color: #66ccc9;
+	text-align: left;
+	padding: 5px 10px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.navpainike:hover,
+.navipainike:active {
+	background: #f7f7f7;
+}
+
+.navteksti {
+	line-height: 25px;
+	vertical-align: top;
+}
+
+.navkuvake {
+	height: 25px;
+	width: 25px;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.hallinta_suodatinteksti {
+	margin-left: 15px;
+	margin-right: 5px;
+}
+
+.sisaltotaulu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 35px;
+	width: 100%;
+	overflow-y: scroll;
+	background-image: url("imgs/tausta_pohja.jpg");
+	background-size: cover;
+}
+
+.hakupalkki {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 30px;
+	border-top: 1px solid black;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	text-align: center;
+}
+
+.ui-autocomplete.ui-widget {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 12px;
+}
+
+.valinta {
+	width: 150px;
+}
+
+.ruutulisayspainike {
+	display: block;
+	width: 100%;
+	margin: 5px;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+}
+
+.ruutulisayspainike:hover,
+.ruutulisayspainike:active {
+	background-color: blue;
+	color: white;
+}
+
+.radiopainike {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.suunnittelu_vuoro_luku {
+	border-right: 1px solid red;
+	border-bottom: 1px solid red;
+	cursor: not-allowed;
+	color: green;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.suunnittelu_vuoro_muokattava {
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	cursor: pointer;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.suunnittelu_vuoro_varattavissa {
+	background-color: #ffffff;
+}
+
+.suunnittelu_vuoro_kiinnitys {
+	background-color: #f02850;
+}
+
+.suunnittelu_suunniteltu_kiinnitys {
+	background-color: #fdbf00;
+}
+
+.suunnittelu_vuoro_korostus {
+	background-color: #28f0e3 !important;
+}
+
+.suunnittelu_vuoro_ei_vaihdettavissa {
+	background-color: #ffabab;
+}
+
+.suunnittelu_vuoro_vaihdettavissa {
+	background-color: #ceffc4;
+}
+
+.suunnittelu_tyhja_pvm {
+	background-color: #50aaf9;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.suunnittelu_valittu_pvm {
+	background-color: #ffff00 !important;
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+	cursor: pointer;
+}
+
+.suunnittelu_valittu_pvm_luku {
+	background-color: #ffff00 !important;
+	font-size: 20px;
+	font-weight: bold;
+	color: green;
+	cursor: not-allowed;
+}
+
+.suunnittelu_solu_tausta {
+	background-color: #ffffff;
+	cursor: help;
+	font-size: 11px;
+}
+
+.suunnittelu_solu_tausta:hover {
+	background-color: #c0eafc;
+}
+
+.suunnittelu_solu_tausta_valittu {
+	background-color: #c0eafc;
+	cursor: help;
+	font-size: 11px;
+}
+
+.suunnittelu_nakyvyys_mobiili {
+	background-image: url("./imgs/mobiilijulkaisu.png");
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+}
+
+.suunnittelu_nakyvyys_kaikki {
+	background-image: url("./imgs/jarjestelmajulkaisu.png");
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+}
+
+.dhx_event_icon,
+.dhx_tooltip_date {
+	display: none !important;
+}
+
+.dhx_tooltip_line {
+	height: auto;
+	line-height: normal;
+}
+
+.dhx_year_tooltip {
+	width: auto !important;
+	font-size: 18px !important;
+	border: 2px solid #000 !important;
+	background: #fff !important;
+	padding: 5px !important;
+	border-radius: 10px !important;
+	cursor: pointer !important;
+	z-index: 999 !important;
+}
+
+.suunnittelu_vuorokiinnitys_teksti_rivi {
+	display: block;
+	text-align: left;
+}
+
+.suunnittelu_vuorokiinnitys_teksti_vuorotyyppi {
+	font-weight: bold;
+}
+
+.suunnittelu_vuorokiinnitys_teksti_osasto {
+	display: block;
+}
+
+.suunnittelu_vuorokiinnitys_teksti_tausta {
+	display: block;
+}
+
+.sisaltotaulu thead {
+	border-top: 1px solid black;
+	border-bottom: 2px solid black;
+}
+
+.sisaltotaulu th {
+	text-align: left;
+	width: 175px;
+	background: #50aaf9;
+	padding: 5px;
+	color: black;
+	cursor: pointer;
+}
+
+.sisaltotaulu tr:nth-child(even) {
+	background: #50aaf9;
+	color: white;
+	line-height: 30px;
+}
+
+.sisaltotaulu tr:nth-child(odd) {
+	background: #86cff9;
+	color: white;
+	line-height: 30px;
+}
+
+.sisaltotaulu tr:hover {
+	background: #d0f0ef;
+	color: black;
+}
+
+.sisaltotaulu td {
+	text-align: center;
+}
+
+.sisaltotaulu table {
+	border: 0;
+	border-collapse: collapse;
+	width: 100%;
+	padding: 20px;
+}
+
+.teksti_vasen {
+	text-align: left;
+}
+
+.teksti_keskella {
+	text-align: center;
+}
+
+.painike {
+	font-size: 12px;
+}
+
+.painike_suuri {
+	font-size: 15px;
+}
+
+.reservi_ylanakyma_teksti,
+.reservi_alanakyma_teksti {
+	display: inline-block;
+	margin-left: 25px;
+	font-weight: bold;
+	color: black;
+}
+
+.tausta {
+	display: block;
+	margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pvm_kentta {
+	width: 75px;
+	vertical-align: middle;
+}
+
+.pvm_kentta_levea {
+	width: 125px;
+	vertical-align: middle;
+}
+
+.ei_aktiivinen {
+	color: #ff5137 !important;
+	border: 1px solid black;
+}
+
+.suunnittelu_suodatinteksti {
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	margin-left: 5px;
+	text-align: left;
+	width: 65px;
+}
+
+.latausteksti {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.latausanimaatio {
+	width: 75px;
+	height: 75px;
+	margin: 0 auto;
+}
+
+.ei_sulku_painiketta .ui-dialog-titlebar-close {
+	display: none;
+}
+
+.vuorotyyppi_kuvake {
+	display: block;
+	border: 1px solid black;
+	width: 40px;
+	height: 25px;
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ali_nakyma_vierekkain {
+	float: left;
+	margin-left: 50px;
+	margin-top: 5px;
+}
+
+.reservi_ali_nakyma {
+	display: block;
+	margin-top: 4px;
+}
+
+.yhteenveto_yhteensa {
+	border-top: 2px solid black;
+	font-weight: bold;
+}
+
+.lyhyt_valinta {
+	width: 75px;
+}
+
+.raportointitoimialuevalintaTeksti,
+.viestintatoimialuevalintaTeksti {
+	margin-left: 10px;
+}
+
+.kirjautumiskuvake {
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.kirjautumiskehys {
+	margin-top: 25px;
+}
+
+.kirjautumisteksti {
+	line-height: 25px;
+	margin-left: 10px;
+	margin-right: 25px;
+	width: 100px;
+	display: inline-block;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: bottom;
+}
+
+.valintakehys {
+	border: 1px solid black;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 5px;
+	box-shadow: 5px 5px black;
+	cursor: pointer;
+}
+
+.valintakehys:hover {
+	background-color: #ffeb76 !important;
+}
+
+.valintakehys_valittu {
+	background-color: #90ff7c !important;
+}
+
+.valintakehys input,
+.valintakehys span {
+	vertical-align: middle;
+}
+
+.viestintalahettajavalintakehys {
+	text-align: left;
+}
+
+.viestintalahettajavalintaTeksti {
+	display: inline-block;
+	margin-top: 10px;
+	text-align: left;
+}
+
+.hallinta_suodatin {
+	width: 75px !important;
+	min-width: 75px !important;
+}
+
+.kytkinteksti {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.kytkinkehys {
+	position: relative;
+	margin: auto;
+	border: 1px solid #adadad;
+	border-radius: 25px;
+	width: 70px;
+	height: 25px;
+	cursor: pointer;
+	transition: 500ms;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.kytkinkehys_ei_aktiivinen {
+	background-color: #ffb2b2;
+}
+
+.kytkinkehys_aktiivinen {
+	background-color: #a4ff94;
+}
+
+.kytkinvipu {
+	position: absolute;
+	top: 1.5px;
+	width: 20px;
+	height: 20px;
+	background-color: #ffffff;
+	border-radius: 20px;
+	border: 1px solid #adadad;
+	transition: 500ms;
+}
+
+.kytkinvipu_ei_aktiivinen {
+	left: 4px;
+}
+
+.kytkinvipu_aktiivinen {
+	left: 44px;
+}
+
+.vuorovaraus_kehys {
+	display: block;
+	margin-top: 5px;
+	text-align: left;
+}
+
+.vuorovaraus_kehys input {
+	margin-left: 10px;
+}
+
+.vuorovaraus_kehys span {
+	margin-left: 10px;
+}
+
+.sisaltotaulu td {
+	text-align: left;
+	padding-left: 10px;
+}
+
+.sisaltotaulu th {
+	text-align: left;
+	padding-left: 10px;
+}
+
+.taulucontainer {
+	position: absolute;
+	top: 35px;
+	bottom: 35px;
+	width: 100%;
+	overflow-y: scroll;
+	background-image: url("imgs/tausta_pohja.jpg");
+	background-size: cover;
+	margin: 0px;
+	padding: 0px;
+}
+
+.taulucontainer th {
+	background: #50aaf9;
+	color: black;
+}
+
+.taulucontainer tr:nth-child(even) {
+	background: #50aaf9;
+	color: white;
+	line-height: 30px;
+}
+
+.taulucontainer tr:nth-child(odd) {
+	background: #86cff9;
+	color: white;
+	line-height: 30px;
+}
+
+.taulucontainer tr:hover {
+	background: #d0f0ef;
+	color: black;
+}
+
+.taulucontainer table {
+	border: 0;
+	border-collapse: collapse;
+	width: 100%;
+	padding: 20px;
+}
+
+.poisto_kuvake,
+.laajenna_kuvake,
+.lisaa_kuvake {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+.varoitus_kuvake {
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.lihavoitu {
+	font-weight: bold;
+}
+
+.reservi_valinta,
+.sihteeri_valinta {
+	width: 125px;
+}
+
+.reservi_kommenttikentta,
+.sihteeri_kommenttikentta {
+	width: 200px;
+}
+
+.reservimaara_teksti,
+.sihteerimaara_teksti {
+	margin-right: 25px;
+}
+
+.reservi_lapsitaulu_kehys,
+.sihteeri_lapsitaulu_kehys {
+	border: 2px solid black;
+}
+
+/*
+.painike_valittu_tila {
+	background: #ffef8f url("images/ui-bg_highlight-soft_25_ffef8f_1x100.png") repeat-x scroll 50% 50%;
+	color: black;
+}
+*/
+
+.painike_valittu_tila {
+	background: #17c1ee url("images/ui-bg_highlight-soft_100_17c1ee_1x100.png")
+		repeat-x scroll 50% 50%;
+	color: white;
+}
+
+.reservi_tallennapainike,
+.sihteeri_tallennapainike {
+	font-size: 12px;
+}
+
+.reservi_tarkistuskehys,
+.sihteeri_tarkistuskehys {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.reservi_lisaysrivi,
+.sihteeri_lisaysrivi {
+	border-top: 2px dashed black;
+	border-bottom: 2px dashed black;
+}
+
+.reservi_rivi_muutettu,
+.sihteeri_rivi_muutettu {
+	background-color: #ffca85 !important;
+}
+
+.valittu_reservi_rivi,
+.valittu_sihteeri_rivi {
+	background-color: #b8ffbc !important;
+	color: black !important;
+}
+
+.vari_esikatselu {
+	cursor: pointer;
+	display: inline-block;
+	width: 150px;
+	border: 1px solid #000;
+}
+
+.vari_hex_esikatselu {
+	width: 100px;
+	display: block;
+}
+
+.sijainenmuutosastot_toimialue_otsikko,
+.sijainenmahdosastot_toimialue_otsikko {
+	margin: 5px;
+	font-weight: bold;
+}
+
+.sijainenmuutosasto_valinta,
+.sijainenmahdosasto_valinta {
+	margin: 5px;
+	display: block;
+}
+
+.vuorokalenteri_paallys {
+	z-index: 999;
+}
+
+.raportti_ruututeksti,
+.loki_ruututeksti {
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 50px;
+	width: 150px;
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.valinta_rivi_teksti {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.toimialuepainike,
+.palvelualuepainike {
+	font-size: 10px;
+}
+
+.raportointiosastohintaTeksti {
+	float: right;
+	margin-right: 10px;
+}
+
+.sisaltotaulu_alapalkki {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	border-top: 2px solid black;
+	text-align: center;
+	height: 35px;
+	box-sizing: border-box;
+}
+
+.suodatinkehys {
+	width: 100%;
+	position: relative;
+}
+
+.suodatinkentta {
+	width: 100%;
+	font-size: 16px;
+	padding: 0px;
+}
+
+.suodatinvalikko {
+	width: 100%;
+	display: none;
+	max-height: 150px;
+	overflow-y: auto;
+	background: #ffffff;
+	position: absolute;
+}
+
+.suodatinvalintarivi {
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+.suodatinvalintarivi:hover {
+	background-color: #4765ff;
+	color: #ffffff;
+}
+
+.lokikirjaus_ed_tieto {
+	background-color: #ff9090;
+	color: #000000;
+}
+
+.lokikirjaus_tieto {
+	background-color: #9bff90;
+	color: #000000;
+}
+
+.tarkista_rivi {
+	border-top: 2px dashed #000;
+	border-bottom: 2px dashed #000;
+	background-color: #ffab00 !important;
+	color: #000 !important;
+	font-weight: bold;
+}
+
+.tarkista_rivi:hover {
+	background-color: #ffd47b !important;
+}
+
+.varivalintakehys {
+	width: 200px;
+	position: relative;
+	margin: auto;
+}
+
+.varikehys {
+	position: absolute;
+	width: 200px;
+	background-color: #ffffff;
+	border-left: 2px solid #000000;
+	border-right: 2px solid #000000;
+	border-bottom: 2px solid #000000;
+	z-index: 9999;
+	padding: 5px;
+}
+
+.varikarttakehys {
+	width: 100%;
+	height: 150px;
+	border: 1px solid #000000;
+	margin-bottom: 10px;
+	position: relative;
+	overflow: hidden;
+	cursor: crosshair;
+}
+
+.varikaistakehys {
+	width: 100%;
+	height: 30px;
+	border: 1px solid #000000;
+	position: relative;
+	overflow: hidden;
+	cursor: grab;
+}
+
+.varikartta_indikaattori {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 10px;
+	height: 10px;
+	border: 2px solid #000;
+	background-color: transparent;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+.varikartta_indikaattori_reuna {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 5px;
+}
+
+.varikaista_indikaattori {
+	position: absolute;
+	top: 0px;
+	width: 10px;
+	height: 100%;
+	border: 2px solid #000;
+	background-color: transparent;
+	box-sizing: border-box;
+}
+
+.varikaista_indikaattori_reuna {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: 1px solid #fff;
+}
+
+#logo_asiakas {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	height: 50px;
+	margin: 0px;
+}
+
+#logo_moveon {
+	display: block-inline;
+	height: 50px;
+	margin: auto;
+}
+
+#kirjautumispainike {
+	font-size: 16px;
+	margin-top: 25px;
+}
+
+#yla_nakyma {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 1px solid black;
+	height: 50px;
+	width: 100%;
+	background: url(imgs/ui_bar1.jpg);
+	background-size: cover;
+}
+
+#hallintanakyma {
+	position: absolute;
+	top: 85px;
+	left: 0px;
+}
+
+#latausnakyma {
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	margin: 0px;
+	bottom: 50px;
+	padding: 0px;
+	width: 100%;
+	display: none;
+	z-index: 9999;
+	background-color: #fff;
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+}
+
+#latauskuvat {
+	margin-top: 100px;
+}
+
+#ala_nakyma {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 0px;
+	border-top: 1px solid black;
+	height: 50px;
+	width: 100%;
+	background-image: url(imgs/ui_bar2.jpg);
+	background-size: cover;
+}
+
+#etusivuPainike {
+	position: absolute;
+	left: 25px;
+	margin-top: 9px;
+	height: 32px;
+}
+
+#ulosPainike {
+	position: absolute;
+	right: 25px;
+	margin-top: 9px;
+	height: 32px;
+}
+
+#tilaTeksti {
+	margin-top: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	display: none;
+	color: black;
+}
+
+#navigaatiopalkki {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	background-color: #deedf7;
+}
+
+#navigaatiopalkki li {
+	float: left;
+}
+
+#navigaatiopalkki li:first-of-type {
+	border-left: 1px solid black;
+}
+
+#navigaatiopalkki ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#hakukohdeValinta {
+	margin: 5px;
+	display: inline-block;
+}
+
+#hakukentta {
+	margin: 5px;
+	display: inline-block;
+	width: 100px;
+}
+
+#hakupainike {
+	display: inline-block;
+	margin: 5px;
+}
+
+#lisayspainike {
+	margin: 5px 5px 5px 15px;
+	float: right;
+	background: #c4ffe5 !important;
+}
+
+#sisaltokehys {
+	position: absolute;
+	top: 35px;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 100%;
+	background-image: url("imgs/tausta_pohja.jpg");
+	background-size: cover;
+}
+
+#kayttajaTietoRuutu {
+	text-align: left;
+}
+
+#kayttajanakymat {
+	width: 100%;
+	height: 85px;
+	overflow-y: auto;
+	border: 1px solid black;
+}
+
+#kayttajasijaisuustaustat {
+	width: 100%;
+	height: 85px;
+	overflow-y: auto;
+	border: 1px solid black;
+}
+
+#kayttajatoimialueet {
+	width: 100%;
+	height: 85px;
+	overflow-y: auto;
+	border: 1px solid black;
+}
+
+#sijainenTietoRuutu,
+#reservilainenTietoRuutu,
+#sihteeriTietoRuutu,
+#nimikeTietoRuutu,
+#osastoTietoRuutu,
+#kustannusTietoRuutu,
+#kilometrikustannusTietoRuutu,
+#sijaisuustaustaTietoRuutu,
+#tyomaaraTietoRuutu,
+#reservikustannusTietoRuutu,
+#reservitaustaTietoRuutu,
+#sihteerikustannusTietoRuutu {
+	text-align: left;
+}
+
+#sijainenmuutosastot,
+#sijainenmahdosastot {
+	width: 100%;
+	overflow-y: auto;
+	border: 1px solid black;
+}
+
+#sijainentoimialueet,
+#reservilainentoimialueet,
+#sihteeripalvelualueet {
+	width: 100%;
+	height: 85px;
+	overflow-y: auto;
+	border: 1px solid black;
+}
+
+#sijainenkommentti {
+	width: 100%;
+	height: 75px;
+	resize: none;
+}
+
+#vuorotyyppitaulu {
+	overflow: scroll;
+}
+
+#vuorotyyppitaulu td {
+	padding-left: 10px;
+	white-space: nowrap;
+}
+
+#vuorotyyppitaulu th {
+	text-align: center;
+	padding: 10px;
+}
+
+#yhteenvetotaulu {
+	overflow: scroll;
+}
+
+#yhteenvetotaulu td {
+	padding-left: 10px;
+	white-space: nowrap;
+}
+
+#yhteenvetotaulu th {
+	text-align: center;
+	padding: 10px;
+}
+
+#vuorokalenteri {
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 35px;
+	border-bottom: 2px solid black;
+}
+
+#suunnittelu_nakymavalinta {
+	position: absolute;
+	right: 115px;
+	top: 15px;
+	font-weight: bold;
+	padding: 5px !important;
+	font-size: 12px;
+	height: 32px;
+}
+
+#suunnittelu_toiminta_painike_kehys {
+	position: absolute;
+	top: 15px;
+	left: 350px;
+}
+
+#suunnittelunakymapikavalinnat {
+	left: 210px;
+	position: absolute;
+	top: 0px;
+}
+
+#suunnittelunakymapikavalinta_hoitaja,
+#suunnittelunakymapikavalinta_sihteeri {
+	display: block;
+	width: 100px;
+	font-size: 10px;
+	margin: 5px;
+}
+
+#suunnittelu_suodatin_kehys {
+	left: 5px;
+	position: absolute;
+	top: 67px;
+}
+
+#suunnittelu_tyyppi_suodatin {
+	font-size: 10px;
+	display: block;
+	min-width: unset;
+}
+
+#suunnittelu_sijaisten_suodatin,
+#suunnittelu_suodatin_painike {
+	font-size: 10px;
+}
+
+#suunnittelu_vuoro_painike {
+	height: 32px;
+	color: red;
+}
+
+#suunnittelu_kiinnitys_painike {
+	height: 32px;
+	color: red;
+}
+
+#suunnittelu_vaihto_painike {
+	height: 32px;
+	color: red;
+}
+
+#suunnittelu_julkaisu_painike {
+	height: 32px;
+	color: green;
+}
+
+#suunnittelu_vuorovaraukset_painike {
+	height: 32px;
+}
+
+#suunnittelu_vuorolukitukset_painike {
+	height: 32px;
+}
+
+#suunnittelu_vuoroyhdistelmat_painike {
+	height: 32px;
+}
+
+#suunnittelu_vuorotyypit_painike {
+	height: 32px;
+}
+
+#suunnittelu_vuorosuunnittelu_painike_kehys {
+	position: absolute;
+	right: 225px;
+	top: 15px;
+}
+
+#suunnittelu_edellinen_jakso_painike .ui-icon {
+	background: url("imgs/edellinen.png") !important;
+	background-size: contain !important;
+	top: 0px !important;
+	left: 0px !important;
+	width: 30px;
+	height: 30px;
+	margin-left: 1px;
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+#suunnittelu_seuraava_jakso_painike .ui-icon {
+	background: url("imgs/seuraava.png") !important;
+	background-size: contain !important;
+	top: 0px !important;
+	left: 0px !important;
+	width: 30px;
+	height: 30px;
+	margin-left: 7px;
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+#suunnittelu_navigaatio_painike_kehys {
+	position: absolute;
+	right: 20px;
+	top: 15px;
+}
+
+#suunnittelu_edellinen_jakso_painike,
+#suunnittelu_seuraava_jakso_painike {
+	width: 40px;
+	height: 32px;
+}
+
+#julkaisuyhteenveto_yhteensa_teksti,
+#julkaisuyhteenveto_yhteensa {
+	border-top: 2px solid black;
+}
+
+#julkaisuyhteenveto_kiinnitykset_teksti,
+#julkaisuyhteenveto_kiinnitykset {
+	margin-top: 10px;
+	border-top: 2px solid black;
+}
+
+#suunnittelu_maaratiedot_kehys {
+	position: relative;
+	display: inline-block;
+	top: 35px;
+}
+
+#suunnittelu_maaratiedot_vuorot {
+	display: inline-block;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#suunnittelu_maaratiedot_erotin {
+	display: inline-block;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#suunnittelu_maaratiedot_sijaiset {
+	display: inline-block;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#vuorokiinnitykset_vuorotiedot {
+	font-weight: bold;
+	display: block;
+	margin-top: 10px;
+}
+
+#vuorokiinnityksetlista {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#vuorokiinnityksetlista td,
+#vuorokiinnityksetlista th {
+	padding: 10px 5px;
+}
+
+#vuorokiinnityksetlista select {
+	width: 150px;
+}
+
+#vuorokiinnityksetlista tr:hover {
+	background-color: #56c1cf;
+}
+
+#vuorolukituksetlista {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#vuorolukituksetlista td,
+#vuorolukituksetlista th {
+	padding: 10px 0px;
+}
+
+#vuorolukituksetlista .vuorolukitus_muokkaus {
+	display: none;
+}
+
+#vuorolukituksetlista .vuorolukitus_poisto {
+	background-color: #e8ff1e !important;
+}
+
+#vuorolukitukset_vuorotyyppi_tallennusrivi {
+	width: 175px;
+}
+
+#vuorolukitukset_raportti_osasto_id_tallennusrivi,
+#vuorolukitukset_osasto_id_tallennusrivi {
+	width: 150px;
+}
+
+#vuorolukitukset_data tr:hover {
+	background-color: #56c1cf;
+}
+
+#vuorolukituksetRuutu .painike {
+	font-size: 12px;
+}
+
+#vuorolukitukset_tallennusrivi {
+	border: 1px solid #000;
+}
+
+#vuoroyhdistelmatlista {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#vuoroyhdistelmatlista td,
+#vuoroyhdistelmatlista th {
+	padding: 10px 0px;
+}
+
+#vuoroyhdistelmatlista .vuoroyhdistelma_muokkaus {
+	display: none;
+}
+
+#vuoroyhdistelmatlista .vuoroyhdistelma_poisto {
+	background-color: #e8ff1e !important;
+}
+
+#vuoroyhdistelmat_data tr:hover {
+	background-color: #56c1cf;
+}
+
+#vuoroyhdistelmatRuutu .painike {
+	font-size: 12px;
+}
+
+#vuoroyhdistelmat_tallennusrivi {
+	border: 1px solid #000;
+}
+
+#vuoroyhdistelmat_vuorotyypit_tallennusrivi {
+	width: 50px;
+}
+
+#vuoroyhdistelmat_tyyppi_tallennusrivi {
+	width: 25px;
+}
+
+#hallinta_tulostiedot {
+	margin-left: 10px;
+	float: left;
+	vertical-align: middle;
+	display: inline;
+	line-height: 35px;
+}
+
+#hallinta_tilakehys {
+	margin-left: 25px;
+	float: left;
+	vertical-align: middle;
+	display: inline;
+	line-height: 35px;
+}
+
+#hallinta_sijaisetsuodatin,
+#hallinta_reservilaisetsuodatin,
+#hallinta_sihteeritsuodatin,
+#hallinta_osastotsuodatin,
+#hallinta_kustannuksetsuodatin {
+	float: left;
+	vertical-align: middle;
+	line-height: 35px;
+}
+
+#hallinta_kustannustilakehys {
+	margin-right: 25px;
+	float: right;
+	vertical-align: middle;
+	display: inline;
+	line-height: 35px;
+}
+
+#hallinta_hakusuodatin {
+	float: right;
+	vertical-align: middle;
+	display: inline;
+	line-height: 35px;
+}
+
+#sijainenpinpainike {
+	display: inline-block;
+	margin-left: 25px;
+	font-size: 12px;
+}
+
+#sijainenpin {
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.sijainenpin_muokattu {
+	background-color: #fdbf00;
+}
+
+#vuorotyyppiTietoRuutu,
+#toimialueTietoRuutu,
+#palvelualueTietoRuutu {
+	text-align: left;
+}
+
+#vuoroseliteRuutu {
+	overflow-y: scroll;
+}
+
+#vuoro_ylanakyma {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 70px;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+}
+
+#vuoro_pvmnakyma {
+	float: right;
+	margin-right: 375px;
+}
+
+#vuorolistataulukehys {
+	top: 70px !important;
+}
+
+#vuorotoimialuepikavalinnat {
+	position: absolute;
+	top: 35px;
+}
+
+#vuorotoimialuesuodatin {
+	margin-right: 50px;
+}
+
+#vuoro_alanakyma {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	border-top: 1px solid black;
+	background-color: #deedf7;
+	color: black;
+}
+
+#vuoro_viestinakyma {
+	margin-left: 50px;
+}
+
+#naytavVuorotyypit {
+	float: right;
+	margin-top: 5px;
+	margin-right: 10px;
+}
+
+#reservi_ylanakyma {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 70px;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+}
+
+#reservilistataulukehys {
+	top: 70px !important;
+}
+
+#reservitoimialuepikavalinnat {
+	position: absolute;
+	top: 35px;
+	left: 15px;
+}
+
+#reservi_alanakyma {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	border-top: 1px solid black;
+	background-color: #deedf7;
+	color: black;
+}
+
+#hakusuodatusnakyma {
+	position: absolute;
+	top: -36px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	border-top: 1px solid black;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+	padding-right: 25px;
+}
+
+#pvmHaku {
+	display: inline-block;
+}
+
+#hakuvalikko {
+	display: inline-block;
+}
+
+#hakusana {
+	display: inline-block;
+	width: 75px;
+}
+
+#viestiteksti {
+	font-weight: bold;
+	color: black;
+}
+
+#viestiruutu {
+	width: 450px;
+}
+
+#viestiruutu_iso {
+	width: 100%;
+	height: 300px;
+	resize: none;
+}
+
+#vuorotyypitlehtipainike {
+	border-right: 1px solid black;
+}
+
+#raportointinakyma {
+	background-image: url("imgs/tausta_pohja.jpg"); /*background-image: linear-gradient(to bottom right, #F7F7F7 0%, #86CFF9 100%); */
+	background-size: cover;
+}
+
+#raportointi_ylanakyma {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid black;
+}
+
+#raportointi_ylanakyma_valinnat {
+	margin-top: 10px;
+}
+
+#raportointiaikavaliKehys {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#raportointivuosikuukausi {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 11px;
+}
+
+#raportointivuosikuukausi .ui-datepicker {
+	border: none;
+	width: 230px;
+	padding: 0;
+}
+
+#raportointivuosikuukausi .ui-datepicker-header {
+	background: #c0eafc url("images/ui-bg_highlight-soft_100_c0eafc_1x100.png")
+		repeat-x scroll 50% 50%;
+	border: 1px solid #000;
+	font-size: 11px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#raportointivuosikuukausi .ui-datepicker-calendar {
+	display: none;
+}
+
+#raportointikalenterivalinta {
+	display: inline-block;
+	margin: 0 20px;
+	background-image: url("imgs/kalenterivalinta.png");
+	background-size: cover;
+	cursor: pointer;
+	width: 25px;
+	height: 25px;
+	vertical-align: middle;
+}
+
+#raportointi_valintanakyma {
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	bottom: 50px;
+	width: 100%;
+	font-weight: bold;
+	color: black;
+}
+
+#raportointi_alanakyma {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 50px;
+	font-weight: bold;
+	color: black;
+	border-top: 1px solid black;
+}
+
+#raportointisiirtotiedostopainikkeetKehys {
+	position: absolute;
+	top: 10px;
+	left: 50px;
+}
+
+#raportointiluoraporttiPainike {
+	display: block;
+	margin: 10px auto;
+}
+
+.raportointisiirtotiedostoKehys {
+	display: inline-block;
+	margin: 0 20px;
+	text-align: left;
+}
+
+.raportointisiirtotiedostoriviKehys {
+	display: block;
+}
+
+#raportointisiirtotiedostoTeksti {
+	margin-top: 10px;
+}
+
+#raportointisiirtotiedostovuosikuukausi {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+#raportointisiirtotiedostovuosikuukausi .ui-datepicker {
+	border: none;
+	width: 230px;
+	padding: 0;
+}
+
+#raportointisiirtotiedostovuosikuukausi .ui-datepicker-header {
+	background: #c0eafc url("images/ui-bg_highlight-soft_100_c0eafc_1x100.png")
+		repeat-x scroll 50% 50%;
+	border: 1px solid #000;
+}
+
+#raportointisiirtotiedostovuosikuukausi .ui-datepicker-calendar {
+	display: none;
+}
+
+.siirtotiedostovalinta {
+	background-color: white;
+	text-align: center;
+}
+
+.siirtotiedostovalintateksti {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+.raportointisiirtotiedostoTeksti {
+	margin-top: 10px;
+}
+
+.raportointisiirtotiedostovalinnat {
+	width: 300px;
+	height: 250px;
+	overflow-y: auto;
+	border: 1px solid black;
+	margin-top: 10px;
+}
+
+#raportointiTeksti {
+	margin-bottom: 10px;
+}
+
+#raportointiraporttiPainike {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#raportointitaustaTeksti {
+	margin-top: 10px;
+}
+
+#raportointiosastoTeksti {
+	margin-top: 10px;
+	display: block !important;
+}
+
+#raportointitaluevalintakehys {
+	margin-left: 10px;
+}
+
+#raportointivalinnatKehys {
+	display: inline-block;
+}
+
+.raportointi_valintakehys {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 10px;
+	text-align: left;
+}
+
+.raportointi_tietovalinnat {
+	height: 500px;
+	overflow-y: auto;
+	border: 1px solid black;
+	width: 100%;
+}
+
+#raportointialueKehys {
+	width: 400px;
+}
+
+#raportointitaustaKehys {
+	width: 300px;
+}
+
+#raportointiosastoKehys {
+	width: 600px;
+}
+
+#raportointiosastoTeksti {
+	margin-top: 10px;
+	display: block !important;
+}
+
+#raportointiosastovalintaKehys {
+	display: inline-block;
+}
+
+#raportointiosastojarjestysKehys {
+	float: right;
+}
+
+.raportointi_jarjestysvalinta {
+	border-radius: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+#raportointihenkiloKehys {
+	width: 400px;
+}
+
+#raportointihenkiloTeksti {
+	margin-top: 10px;
+	display: block !important;
+}
+
+#raportointihenkilovalintaKehys {
+	display: inline-block;
+}
+
+#raportointihenkilojarjestysKehys {
+	float: right;
+}
+
+#raportointitaustavalinnat div,
+#raportointitoimialuevalinnat div {
+	background-color: #fff;
+}
+
+#raportointivaroitusTeksti {
+	color: red;
+}
+
+#raportointityyppivalinta {
+	width: 125px;
+}
+
+#raportointivalinnat {
+	border-bottom: 1px solid black;
+}
+
+#raportointiraporttivalinta,
+#raportointihenkilostovalinta {
+	padding: 5px !important;
+	width: 175px !important;
+	font-size: 11px !important;
+	margin: 0 25px;
+	vertical-align: middle;
+}
+
+#raportointivalinnat .pvm_kentta {
+	margin: 0 25px;
+	vertical-align: middle;
+}
+
+#raportointityhjavalintakehys {
+	margin-top: 10px;
+}
+
+#raportointisiirtotiedostovalinta {
+	width: 230px;
+}
+
+#julkaisuLatausAnimaatio {
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+#viestintanakyma {
+	background-image: url("imgs/tausta_pohja.jpg"); /*background-image: linear-gradient(to bottom right, #F7F7F7 0%, #86CFF9 100%); */
+	background-size: cover;
+}
+
+#viestintasijaisKehys {
+	display: inline-block;
+	width: 325px;
+}
+
+#viestintasijaisvalintakehys {
+	margin-top: 10px;
+}
+
+#viestintaviestiKehys {
+	margin-top: 40px;
+	display: inline-block;
+	margin-left: 10px;
+	vertical-align: top;
+}
+
+#viestintatoimialuevalinnat {
+	text-align: left;
+}
+
+#viestintasijaisvalinnat {
+	margin-top: 10px;
+	text-align: left;
+	height: 375px;
+	overflow-y: auto;
+	border: 1px solid black;
+}
+
+#viestintasijaisTeksti {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+}
+
+#viestintaviesti {
+	display: block;
+	font-size: 18px;
+	height: 150px;
+	margin-top: 10px;
+	width: 300px;
+}
+
+#viestintaviestimerkit {
+	display: block;
+	width: 100%;
+	text-align: right;
+}
+
+#viestintalahetaPainike {
+	margin-top: 10px;
+}
+
+#viestintatekstiselite {
+	margin-top: 10px;
+	display: block;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+}
+
+#vuoropaivityskytkinkehys {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#sijainenaktiivinenvalintaKehys,
+#reservilainenaktiivinenvalintaKehys,
+#sihteeriaktiivinenvalintaKehys,
+#toimialueaktiivinenvalintaKehys,
+#vuoronakymassavalintaKehys {
+	margin-top: 10px;
+}
+
+#osastotoimialue,
+#kustannusosasto,
+#sijainennimike,
+#sijainenkotiosasto,
+#tyomaarajaksoreservilainen,
+#reservilainennimike,
+#sihteerinimike,
+#kilometrikustannustyyppi {
+	width: 280px;
+}
+
+#tyomaarajaksoprosentti {
+	width: 155px;
+}
+
+#uloskirjautumispainike {
+	margin-top: 25px;
+}
+
+#nakymavalintaKehys {
+	height: 300px;
+}
+
+#viestintalahettaja {
+	font-weight: bold;
+}
+
+#vuorovaraus_viestit {
+	display: block;
+	width: 100%;
+}
+
+#vuorovarausRuutu {
+	text-align: left;
+}
+
+#vuorovaraus_sijaiset {
+	margin-top: 10px;
+	height: 225px;
+	overflow-y: scroll;
+	border: 2px solid black;
+	text-align: left;
+}
+
+#vuorovaraus_poista_painike {
+	display: inline-block;
+	font-size: 14px;
+}
+
+#vuorovaraus_kaikki_valinta_kehys {
+	margin-top: 10px;
+	display: inline-block;
+	margin-right: 25px;
+}
+
+#vuorotauluotsikot,
+#reservitauluotsikot {
+	border-top: 1px solid black;
+	border-bottom: 2px solid black;
+}
+
+#reservi_pvmnakyma {
+	display: inline-block;
+	margin-top: 4px;
+}
+
+#reservi_varoitusvalinta_kehys {
+	display: inline-block;
+	margin-top: 4px;
+}
+
+#reservi_varoitusvalinta {
+	vertical-align: middle;
+}
+
+#reservi_hakunakyma {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 35px;
+	margin-right: 35px;
+}
+
+#reservi_lisays_kommentti {
+	width: 300px;
+}
+
+#reservi_poisto_teksti {
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+#reservi_poisto_ohjeteksti {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin-left: 10px;
+}
+
+#reservi_maara {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+#vuoro_haku_kuvake {
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+	margin-right: 50px;
+}
+
+#vuoro_paivitys_aika {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#suunnittelutoimialuepikavalinnat {
+	position: absolute;
+	bottom: 5px;
+	left: 15px;
+}
+
+#viestintatoimialueKehys {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 40px;
+	margin-right: 10px;
+}
+
+#suunnittelu_toimialue_suodatin {
+	position: absolute;
+	top: 15px;
+	left: 10px;
+	height: 32px;
+}
+
+#suunnittelu_vuoroasetukset_kehys {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#suunnittelu_vuorotausta_valinta_kehys,
+#suunnittelu_vuorokiinnitysteksti_valinta_kehys {
+	position: relative;
+	border: 1px solid black;
+	border-radius: 6px;
+	font-size: 10px;
+	font-weight: bold;
+	background: #c0eafc url("images/ui-bg_highlight-soft_100_c0eafc_1x100.png")
+		50% 50% repeat-x;
+	margin: 5px;
+	cursor: pointer;
+	color: black;
+}
+
+#suunnittelu_vuorotausta_valinta_kehys input,
+#suunnittelu_vuorokiinnitysteksti_valinta_kehys input {
+	vertical-align: middle;
+}
+
+#suunnittelu_vuorotausta_valinta_kehys span,
+#suunnittelu_vuorokiinnitysteksti_valinta_kehys span {
+	display: inline-block;
+	padding: 3px;
+	vertical-align: middle;
+	width: 150px;
+}
+
+#suunnittelu_vuorotausta_valinta_kehys:hover,
+#suunnittelu_vuorokiinnitysteksti_valinta_kehys:hover {
+	border: 1px solid #74b2e2;
+	background: #b9d8ef url("images/ui-bg_highlight-soft_100_b9d8ef_1x100.png")
+		50% 50% repeat-x;
+	font-weight: bold;
+	color: #0070a3;
+}
+
+#raportointilatauskuva {
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+#lokikehys {
+	width: 100%;
+	height: 100%;
+	background-image: url("imgs/tausta_pohja.jpg"); /*background-image: linear-gradient(to bottom right, #F7F7F7 0%, #86CFF9 100%); */
+	background-size: cover;
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
+	overflow-y: auto;
+}
+
+#haeLokiKirjauksetPainike {
+	margin-top: 25px;
+	margin-left: 150px;
+	margin-bottom: 10px;
+}
+
+#lokitapahtumavalinnat {
+	max-height: 200px;
+	overflow-y: auto;
+	padding: 5px;
+	box-sizing: content-box;
+}
+
+#lokikirjauksetKehys {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 100%;
+}
+
+#lokitapahtumavalintakehys {
+	display: inline-block;
+}
+
+#lokikirjauksetKehys .sisaltotaulu {
+	background: none !important;
+}
+
+#lokikirjauslukumaaraTeksti {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#lokinakymavalinta,
+#lokikayttajavalinta {
+	width: 180px;
+}
+
+#lokitunnistehakusanat,
+#lokitietohakusanat {
+	width: 100%;
+	font-size: 16px;
+}
+
+#lokikirjaussuodatinKuvake {
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+#lokivalintaKehys {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 425px;
+	background-color: #5b9dff;
+	z-index: 100;
+	box-sizing: border-box;
+	border-right: 2px solid black;
+}
+
+#lokinakymavalikkoPainike {
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	cursor: pointer;
+	z-index: 101;
+}
+
+#lokinakymavalikkoPainike .valikkopalkki {
+	width: 25px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	height: 5px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+#lokivalitsetapahtumat,
+#lokikaikkitapahtumatTeksti {
+	vertical-align: middle;
+}
+
+#lokikirjausdata tr {
+	border-bottom: 1px solid black;
+}
+
+#lokiaikavaliKehys {
+	margin-top: 20px;
+}
+
+#lokikalenteri {
+	margin-top: 10px;
+	margin-left: 15px;
+	font-size: 12px;
+}
+
+#lokivalintatauluKehys {
+	padding-top: 50px;
+}
+
+#lokivalintatauluKehys table {
+	margin-left: 10px;
+}
+
+#lokiaikavaliTeksti,
+#lokitapahumavalintaTeksti {
+	display: inline-block;
+	margin-right: 20px;
+	font-weight: bold;
+	margin-left: 15px;
+	width: 100px;
+}
+
+#lokikirjauksetKehys .sisaltotaulu th {
+	cursor: default !important;
+}
+
+#lokitapahtumavalinnat .valintakehys,
+#lokitapahtumavalinnat .valintakehys_valittu {
+	box-shadow: none !important;
+}
+
+#lokikirjauslukumaaravalimerkki {
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#lokikirjausrivimaara,
+#lokikirjausrivimaarayhteensa {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#sihteeri_varoitusvalinta {
+	vertical-align: middle;
+}
+
+#sihteeri_hakunakyma {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 35px;
+	margin-right: 35px;
+}
+
+#sihteeri_lisays_kommentti {
+	width: 300px;
+}
+
+#sihteeri_poisto_teksti {
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+#sihteeri_poisto_ohjeteksti {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin-left: 10px;
+}
+
+#sihteeri_maara {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+#sihteeri_ylanakyma {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 70px;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+}
+
+#sihteerilistataulukehys {
+	top: 70px !important;
+}
+
+#sihteeritoimialuepikavalinnat {
+	position: absolute;
+	top: 35px;
+	left: 15px;
+}
+
+#sihteeritilapainikekehys,
+#sihteeri_pvmnakyma,
+#sihteeri_varoitusvalinta_kehys {
+	display: inline-block;
+	margin-top: 4px;
+}
+
+#sihteeri_alanakyma {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	border-top: 1px solid black;
+	background-color: #deedf7;
+	color: black;
+}
+
+#matka_maara {
+	display: inline-block;
+	margin-left: 50px;
+}
+
+#matka_sijainen {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#matkantoimintopainikekehys {
+	display: inline-block;
+	margin: 0 50px;
+}
+
+#matkaTietoRuutu .ui-datepicker-trigger {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 20px;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+.matka_kalenteri_valittava_pvm a {
+	background-color: rgb(94, 184, 4) !important;
+	background-image: none !important;
+}
+
+.matka_kalenteri_valittava_pvm > .ui-state-active {
+	background-color: rgb(184, 142, 4) !important;
+	background-image: none !important;
+}
+
+#matkavuoro {
+	background: #c0eafc url("images/ui-bg_highlight-soft_100_c0eafc_1x100.png")
+		repeat-x scroll 50% 50%;
+	border: 1px solid #000;
+	color: #000;
+	font-weight: bold;
+	border-radius: 6px;
+	padding: 4px;
+	width: 200px;
+	vertical-align: middle;
+	font-size: 12px;
+}
+
+#matka_ylanakyma {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+	text-align: left;
+}
+
+#matkataulukehys {
+	top: 35px !important;
+	bottom: 0 !important;
+}
+
+#matkatietokehys {
+	display: inline-block;
+	margin-top: 4px;
+}
+
+.matkapainike {
+	font-size: 10px;
+}
+
+#matkavuorotieto {
+	font-weight: bold;
+	font-size: 16px;
+	width: 250px;
+	word-break: break-word;
+	text-align: left;
+}
+
+.matkakenttateksti {
+	margin-right: 50px;
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: middle;
+	width: 100px;
+}
+
+#matkamatka,
+#matkaselite {
+	width: 250px;
+	resize: none;
+	height: 100px;
+	vertical-align: middle;
+}
+
+#matkaselitemerkkimaara {
+	display: block;
+	margin-left: 390px;
+}
+
+#matkakm,
+#matkalahtoaika,
+#matkapaluuaika {
+	width: 250px;
+}
+
+#matkataulu .matka_ei_lahetetty:nth-child(even) {
+	background: #50aaf9;
+	color: white;
+	line-height: 30px;
+}
+
+#matkataulu .matka_ei_lahetetty:nth-child(odd) {
+	background: #86cff9;
+	color: white;
+	line-height: 30px;
+}
+
+#matkataulu .matka_hylatty:nth-child(even) {
+	background: #9d1c08;
+	color: white;
+	line-height: 30px;
+}
+
+#matkataulu .matka_hylatty:nth-child(odd) {
+	background: #d91e00;
+	color: white;
+	line-height: 30px;
+}
+
+#matka_poisto_teksti {
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+#matkalahetysTietoRuutu .ruututausta {
+	text-align: left;
+}
+
+#matkalahetys_pvmnakyma {
+	display: block;
+	margin-top: 4px;
+	text-align: center;
+}
+
+#matkalahetys_pvmnakyma_teksti {
+	display: inline-block;
+	margin-left: 25px;
+	font-weight: bold;
+	color: black;
+}
+
+#matkalahetys_matkahaku_painike {
+	display: inline-block;
+	margin-left: 25px;
+	font-size: 12px;
+}
+
+#matkavalitsekaikkimatkatTeksti {
+	font-weight: bold;
+}
+
+#matkavalintaKehys {
+	display: block;
+	margin: 10px 0;
+}
+
+#matkalahetysvalinnat {
+	height: 333px;
+	overflow-y: auto;
+	border: 1px solid black;
+	text-align: left;
+}
+
+.matkavalintateksti {
+	text-align: center;
+	margin-top: 5px;
+	display: block;
+	font-weight: bold;
+}
+
+.matkalahetysvalintakehys {
+	border: 1px solid black;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 5px 10px 10px 5px;
+	box-shadow: 5px 5px black;
+	cursor: pointer;
+	background-color: #c0eafc;
+	padding: 5px;
+}
+
+.matkalahetysvalintakehys_valittu {
+	background-color: #5b9dff;
+}
+
+.matkalahetysvalintakehys:hover {
+	background-color: #ffff00;
+}
+
+.matkalahetysValinta,
+.matkalahetysvalintaTeksti {
+	vertical-align: middle;
+}
+
+#matka_lahetys_teksti {
+	display: block;
+}
+
+#matka_lahetyshuomio_teksti {
+	display: block;
+	margin-top: 10px;
+	font-weight: bold;
+	color: rgb(187, 26, 26);
+}
+
+#matkahuomautusteksti {
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(187, 26, 26);
+}
+
+#matka_hyvaksytty_matkamaara {
+	display: inline-block;
+	width: 230px;
+}
+
+#matkatarkistus_maara {
+	display: inline-block;
+	margin-left: 50px;
+}
+
+#matkatarkistus_sijainen {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#matkatarkistus_tarkistettavatvalintaKehys {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#matkatarkistus_tarkistettavat_teksti {
+	font-weight: bold;
+}
+
+#matkatarkistusntoimintopainikekehys {
+	display: inline-block;
+	margin: 0 50px;
+}
+
+#matkatarkistusnakymapikavalinnat {
+	display: inline-block;
+	margin: 0 25px;
+}
+
+#matkatarkistus_ylanakyma {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+	text-align: left;
+}
+
+#matkatarkistus_alanakyma {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 50px;
+	font-weight: bold;
+	background-color: #deedf7;
+	color: black;
+	text-align: left;
+}
+
+#matkatarkistustaulukehys {
+	top: 35px !important;
+	bottom: 50px !important;
+}
+
+#matkatarkistustietokehys {
+	display: inline-block;
+	margin-top: 4px;
+}
+
+.matkatarkistus_painike:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.matkatarkistus_painike {
+	font-size: 10px;
+}
+
+#matkatarkistusTietoRuutu .ruututausta {
+	text-align: left;
+}
+
+#matkatarkistus_pvmnakyma {
+	float: left;
+	margin-top: 5px;
+}
+
+#matkatarkistus_pvmnakyma_teksti {
+	display: inline-block;
+	font-weight: bold;
+	color: black;
+}
+
+#matkatarkistus_matkahaku_painike {
+	display: inline-block;
+	margin-left: 25px;
+	font-size: 12px;
+}
+
+#matkatarkistus_painikekehys {
+	float: right;
+	margin-top: 5px;
+}
+
+#matkatarkistus_palautakaikki_painike {
+	font-size: 12px;
+	color: black;
+	background-color: #ff664e;
+	background-image: none;
+}
+
+#matkatarkistus_hyvaksykaikki_painike {
+	font-size: 12px;
+	color: black;
+	background-color: #9bff90;
+	background-image: none;
+}
+
+#matkatarkistusvalinnat {
+	overflow-y: auto;
+	border: 1px solid black;
+	text-align: left;
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	bottom: 0px;
+	top: 50px;
+}
+
+.matkatarkistusvalintateksti {
+	text-align: center;
+	margin-top: 5px;
+	display: block;
+	font-weight: bold;
+}
+
+.matkatarkistusvalintakehys {
+	border: 1px solid black;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 5px 10px 10px 5px;
+	box-shadow: 5px 5px black;
+	background-color: #c0eafc;
+	padding: 5px;
+	position: relative;
+}
+
+.matkatarkistusvalintaTeksti {
+	display: block;
+	padding-right: 200px;
+}
+
+.matkatarkistusvalintatarkistuskehys {
+	position: absolute;
+	right: 5px;
+	top: 2px;
+}
+
+.matkatarkistus_palautettava {
+	background-color: #ff664e;
+	color: black;
+}
+
+.matkatarkistus_hyvaksytty {
+	background-color: #9bff90;
+	color: black;
+}
+
+#matkatarkistus_yhteenveto {
+	display: block;
+}
+
+#matkatarkistus_huomio_teksti {
+	display: block;
+	margin-top: 10px;
+	font-weight: bold;
+	color: rgb(187, 26, 26);
+}
+
+#matkatarkistus_hyvaksytty_matkamaara {
+	display: inline-block;
+	width: 230px;
+}

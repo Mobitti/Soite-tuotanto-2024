@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="fi">
+	<head>
+		<title>Moveon</title>
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+		<link rel="icon" href="./favicon.ico" type="image/x-icon">		
+		<link rel="Stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="scheduler/dhtmlxscheduler.css">
+		<link rel="Stylesheet" type="text/css" href="css/stylesheet.css" />
+		<style type="text/css"></style>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="scheduler/dhtmlxscheduler.js"></script>
+		<script type="text/javascript" src="scheduler/ext/dhtmlxscheduler_timeline.js"></script>
+		<script type="text/javascript" src="scheduler/locale/locale_fi.js"></script>
+		<script type="text/javascript" src="js/jquery.ui.datepicker-fi.js"></script>
+		<script type="text/javascript" src="js/core.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				alusta_sivu();
+			});
+		</script>
+	</head>
+	<body>
+		<!-------------------- Kirjautumisnäkymä --------------------------->
+		
+		<div id="kirjautumisnakyma">
+			<h1 id="etusivu_otsikko_teksti">MOVEON</h1>
+			<img id="taustakuva" src="css/imgs/taustakuva.png" class="tausta"/>
+			
+			<div id="kirjautumiskentta">
+				<div id="kirjautumistunnusKehys" class="kirjautumiskehys">
+					<img id="kirjautumistunnusKuvake" src="css/imgs/tunnus.png" class="kirjautumiskuvake"></img> 	
+					<span id="kirjautmistunnusSelite" class="kirjautumisteksti">Tunnus</span>
+					<input id="tunnus" class="ruutukentta" value="" />
+				</div>		
+				<div id="kirjautumissalasanaKehys" class="kirjautumiskehys">
+					<img id="kirjautumissalasanaKuvake" src="css/imgs/salasana.png" class="kirjautumiskuvake"></img> 	
+					<span id="kirjautumissalasanaSelite" class="kirjautumisteksti">Salasana</span>
+					<input id="salasana" type="password" class="ruutukentta" value="" />
+				</div>
+				<button id="kirjautumispainike" onclick="tarkista_tunnukset()">Kirjaudu sisään</button>
+			</div>
+		</div>
+		
+		<!----------------- Moveon päänäkymä ---------------------------->
+		
+		<div id="aloitusnakyma" class="piilotettu">
+			<h1 id="aloitusnakyma_otsikko_teksti">MOVEON</h1>
+			<img id="taustakuva" src="css/imgs/taustakuva.png" class="tausta" />
+			
+			<div id="nakymavalintaKehys">
+				<div id="vuoronakyma_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('vuoronakyma_kuvake')">
+					<img src="css/imgs/vuoronakyma.png" draggable="false"></img> 		
+					<span>Vuoronäkymä</span>
+				</div>
+				<div id="vuorosuunnittelu_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('vuorosuunnittelu_kuvake')">
+					<img src="css/imgs/vuorosuunnittelu.png" draggable="false" /> 		
+					<span>Vuorosuunnittelu</span>
+				</div>
+				<div id="jarjestelmahallinta_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('jarjestelmahallinta_kuvake')">
+					<img src="css/imgs/jarjestelmanhallinta.png" draggable="false" />
+					<span>Järjestelmänhallinta</span>
+				</div>
+				<div id="loki_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('loki_kuvake')">
+					<img src="css/imgs/loki.png" draggable="false" /> 
+					<span>Loki</span>
+				</div>
+				<div id="raportointi_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('raportointi_kuvake')">
+					<img src="css/imgs/raportointi.png" draggable="false" />
+					<span>Raportointi</span>
+				</div>
+				<div id="viestinta_kuvake" class="nakymakuvake ei_valittavissa kuvakealue piilotettu" onclick="nakyma_valinta('viestinta_kuvake')">
+					<img src="css/imgs/viestinta.png" draggable="false" />
+					<span>Viestintä</span>
+				</div>
+				<div id="reservinakyma_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('reservinakyma_kuvake')">
+					<img src="css/imgs/reservinakyma.png" draggable="false" />
+					<span>Reservinäkymä</span>
+				</div>
+				<div id="sihteerinakyma_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('sihteerinakyma_kuvake')">
+					<img src="css/imgs/sihteerinakyma.png" draggable="false" />
+					<span>Sihteerinäkymä</span>
+				</div>
+				<div id="matkanakyma_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('matkanakyma_kuvake')">
+					<img src="css/imgs/matkanakyma.png" draggable="false" />
+					<span>Matkanäkymä</span>
+				</div>
+				<div id="matkatarkistus_kuvake" class="nakymakuvake ei_valittavissa kuvakealue" onclick="nakyma_valinta('matkatarkistus_kuvake')">
+					<img src="css/imgs/matkatarkistus.png" draggable="false" />
+					<span>Matkojen tarkistus</span>
+				</div>
+			</div>
+			<button id="uloskirjautumispainike" class="painike_suuri" onclick="kirjaudu_ulos()">Kirjaudu ulos</button>
+		</div>
+		
+		<!-------------------- Sisaltönäkymä -------------------------------->
+		
+		<div id="sisaltonakyma" class="piilotettu">
+			<!------------------- Sisaltö ylänäkymä -------------------------->
+			<div id="yla_nakyma">		
+				<img id="logo_moveon" src="css/imgs/logo_moveon.png" />
+				<button id="etusivuPainike" class="painike" onclick="etusivu()">Etusivu</button>
+				<button id="ulosPainike" class="painike" onclick="kirjaudu_ulos()">Kirjaudu ulos</button>
+			</div>
+
+			<!--------------------- Vuoronäkymä --------------------------->
+			<div id="vuoronakyma" class="kehys">		
+				<div id="vuoro_ylanakyma">
+					<div id="vuoro_paivitysnakyma" class="ali_nakyma_vierekkain">
+						<span id="vuoro_maara"></span>
+						<span id="vuoro_paivitys_aika"></span>
+						<img id="vuoro_haku_kuvake" src="css/imgs/varoitus.png" />
+						<div id="vuoropaivityskytkinkehys">
+							<span class="kytkinteksti">Vuorojenpäivitys</span>
+							<div id="vuoropaivityskytkin" class='kytkinkehys kytkinkehys_aktiivinen' data-aktiivinen='1' data-edellinen_tila='1'>
+								<div class='kytkinvipu kytkinvipu_aktiivinen' onclick="aseta_vuoropaivitys()"></div>
+							</div>
+						</div>
+					</div>
+					
+					<div id="vuoro_pvmnakyma" class="ali_nakyma_vierekkain">
+						<span class="lihavoitu">Pvm:</span>
+						<input id="pvmHaku" readonly class="pvm_kentta" />
+						<button id="edellinenPvmPainike" class="painike vuoro_pvmpainike" onclick="vuoro_edellinenPvm()">&lt;</button>
+						<button id="seuraavaPvmPainike" class="painike vuoro_pvmpainike" onclick="vuoro_seuraavaPvm()">&gt;</button>
+					</div>
+					
+					<div id="vuoro_nakymaasetukset" class="ali_nakyma_vierekkain">
+						<span class="lihavoitu piilotettu">Toimialue:</span>
+						<select id="vuorotoimialuesuodatin" multiple class="valintakentta piilotettu"></select>
+						
+						<button id="vuoronakymapikavalinta_hoitaja" class="painike pikavalintapainikkeet" onclick="vuoro_vaihda_nakyma(1)">Hoitaja</button>
+						<button id="vuoronakymapikavalinta_sihteeri" class="painike pikavalintapainikkeet" onclick="vuoro_vaihda_nakyma(0)">Sihteeri</button>
+						
+						<select id="vuoronakymavalinta" class="valintakentta piilotettu">
+							<option value="0" selected>Hoitajat</option>
+							<option value="1">Sihteerit</option>
+						</select>	
+					</div>
+					<div id="vuorotoimialuepikavalinnat"></div>
+				</div>
+				
+				<div id="vuorolistataulukehys" class="taulucontainer">
+					<table id="vuorolistataulu">
+						<thead id="vuorotauluotsikot">
+							<th onclick="vuoro_aseta_jarjestys('nimi')" class="teksti_vasen">Nimi</th>
+							<th onclick="vuoro_aseta_jarjestys('nimike')" class="lyhyt teksti_keskella">Nimike</th>
+							<th onclick="vuoro_aseta_jarjestys('kotiosasto')" class="lyhyt teksti_keskella">Kotiosasto</th>
+							<th onclick="vuoro_aseta_jarjestys('muut_osastot')" class="vuoromuutosastotkentta teksti_keskella">Muut osastot</th>
+							<th onclick="vuoro_aseta_jarjestys('kommentti')" class="teksti_keskella">Kommentti</th>
+							<th onclick="vuoro_aseta_jarjestys('iv')" class="lyhyt teksti_keskella">IV</th>
+							<th onclick="vuoro_aseta_jarjestys('laakelupa')" class="lyhyt teksti_keskella">Lääkelupa</th>
+							<th onclick="vuoro_aseta_jarjestys('vuorotyyppi')" class="lyhyt teksti_keskella">Vuoro</th>
+							<th onclick="vuoro_aseta_jarjestys('sijaisuusosasto')" class="vuoroosastokentta teksti_keskella">Sijaisuusosasto</th>
+							<th onclick="vuoro_aseta_jarjestys('sijaisuustausta')" class="vuorotaustakentta teksti_keskella">Sijaisuustausta</th>
+						</thead>
+						<tbody id="vuorotauludata"></tbody>
+					</table>
+				</div>
+				
+				<div id="vuoro_alanakyma">
+					<div id="vuoro_hakunakyma" class="ali_nakyma_vierekkain">
+						<span id="vuorohakuTeksti" class="lihavoitu">Haku:</span>
+						<select id="hakuvalikko" class="valintakentta">
+							<option value="nimi" selected>Nimi</option>
+							<option value="nimike">Nimike</option>
+							<option value="kotiosasto">Kotiosasto</option>
+							<option value="muut_osastot">Muut osastot</option>
+							<option value="kommentti">Kommentti</option>
+							<option value="iv">IV</option>
+							<option value="laakelupa">Lääkelupa</option>
+							<option value="vuorotyyppi">Vuoro</option>
+							<option value="sijaisuusosasto">Sijaisuusosasto</option>
+							<option value="sijaisuustausta">Sijaisuustausta</option>
+							<option value="sijaisuustaustakommentti">Tausta kommentti</option>
+						</select>
+						<input id="hakusana" />
+						<button id="haePainike" class="painike" onclick="vuoro_hae_vuorot()">Hae</button>
+					</div>
+					
+					<div id="vuoro_viestinakyma" class="ali_nakyma_vierekkain">
+						<span id="paivanviestiTeksti" class="lihavoitu">Päivän viesti:</span>
+						<input id="viestiruutu" type="text" onclick="vuoro_nayta_paivan_viesti_ruutu()" readonly />		
+					</div>
+					<button id="naytavVuorotyypit" class="painike" onclick="vuoro_nayta_vuoroselite_ruutu()">Vuorotyypit</button>
+				</div>
+
+				<div id="paivanviestiruutu">
+					<textarea id="viestiruutu_iso"></textarea>
+				</div>
+				
+				<div id="vuoroseliteRuutu">
+					<table id="vuoroselitetaulu">
+						<thead>
+							<th class="lyhyt">Tyyppi</th>
+							<th class="pitka_teksti">Kuvaus</th>
+						<thead>
+						<tbody id="vuoroselitetiedot"></tbody>
+					</table>
+				</div>
+				
+				<div id="vuorolatausRuutu">
+					<img src="css/imgs/loader.gif" class="latausanimaatio" />
+				</div>
+			</div>
+			
+			<!------------------- Vuorosuunnittelu ------------------------------>
+			
+			<div id="suunnittelunakyma" class="kehys">
+				<div id="suunnittelu_maaratiedot_kehys" class="vuorokalenteri_paallys">
+					<span id="suunnittelu_maaratiedot_vuorot">-</span>
+					<span id="suunnittelu_maaratiedot_erotin">-</span>
+					<span id="suunnittelu_maaratiedot_sijaiset">-</span>
+				</div>
+				<select id="suunnittelu_toimialue_suodatin" class="valintakentta vuorokalenteri_paallys piilotettu" multiple onchange="suunnittelu_hae_sijaiset()"></select> <!--piilotettu-->
+				<div id="suunnittelunakymapikavalinnat">
+					<button id="suunnittelunakymapikavalinta_hoitaja" class="painike pikavalintapainikkeet vuorokalenteri_paallys" onclick="suunnittelu_vaihda_nakyma(1)">Hoitaja</button>
+					<button id="suunnittelunakymapikavalinta_sihteeri" class="painike pikavalintapainikkeet vuorokalenteri_paallys" onclick="suunnittelu_vaihda_nakyma(0)">Sihteeri</button>
+				</div>
+				<select id="suunnittelu_nakyma_suodatin" class="valintakentta piilotettu" onchange="suunnittelu_hae_sijaiset()">
+					<option value="0" selected>Hoitajat</option>
+					<option value="1">Sihteerit</option>
+				</select>
+				<div id="suunnittelu_suodatin_kehys" class="vuorokalenteri_paallys">
+					<input id="suunnittelu_sijaisten_suodatin" placeholder="Nimi tai (Nimike)" />
+					<button id="suunnittelu_suodatin_painike" class="painike" onclick="suunnittelu_hae_sijaiset()">Suodata</button>
+				</div>
+				<div id="suunnittelu_vuoroasetukset_kehys">
+					<div id="suunnittelu_vuorotausta_valinta_kehys" class="vuorokalenteri_paallys">
+						<input id="vuorotaustavari_valinta" class="vuorokalenteri_paallys" type="checkbox" />
+						<span id="vuorotaustavari_valintateksti" class="vuorokalenteri_paallys">Näytä taustavärit</span>
+					</div>
+					<div id="suunnittelu_vuorokiinnitysteksti_valinta_kehys" class="vuorokalenteri_paallys">
+						<input id="vuorokiinnitysteksti_valinta" class="vuorokalenteri_paallys" type="checkbox" checked />
+						<span id="vuorokiinnitysteksti_valintateksti" class="vuorokalenteri_paallys">Näytä kiinnitykset</span>
+					</div>
+				</div>
+				<div id="suunnittelu_toiminta_painike_kehys">
+					<button id="suunnittelu_vuoro_painike" class="painike vuorokalenteri_paallys" onclick="suunnittelu_vaihda_vuoro_tilaa()">Luo vuoroja</button>
+					<button id="suunnittelu_kiinnitys_painike" class="painike vuorokalenteri_paallys" onclick="suunnittelu_vaihda_kiinnitys_tilaa()">Muokkaa kiinnityksiä</button>
+					<!-- <button id="suunnittelu_vaihto_painike" class="painike vuorokalenteri_paallys" onclick="suunnittelu_vaihda_vaihto_tilaa()">Vaihda vuoroja</button>-->
+					<button id="suunnittelu_julkaisu_painike" class="painike vuorokalenteri_paallys" onclick="suunnittelu_nayta_julkaisu()">Julkaise</button>
+				</div>
+				<div id="suunnittelu_vuorosuunnittelu_painike_kehys">
+					<button id="suunnittelu_vuorolukitukset_painike" class="painike vuorokalenteri_paallys" onclick="suunnittelu_nayta_vuorolukitukset()">Vuorolukitukset</button>
+					<button id="suunnittelu_vuoroyhdistelmat_painike" class="painike vuorokalenteri_paallys" onclick="suunnittelu_nayta_vuoroyhdistelmat()">Vuoroyhdistelmät</button>
+					<button id="suunnittelu_vuorotyypit_painike" class="painike vuorokalenteri_paallys" onclick="suunnittelu_nayta_vuorotyypit()">Vuorotyypit</button>
+					<button id="suunnittelu_vuorovaraukset_painike" class="painike vuorokalenteri_paallys" onclick="suunnittelu_nayta_vuorovaraukset()">Vuorovaraukset</button>
+				</div>
+				<select id="suunnittelu_nakymavalinta" class="valintakentta vuorokalenteri_paallys" onchange='suunnittelu_vaihda_nakymaa()'>
+					<option value="3">3 Viikkoa</option>
+					<option value="6">6 Viikkoa</option>
+					<option value="9">9 Viikkoa</option>
+				</select>
+				<div id="suunnittelu_navigaatio_painike_kehys">
+					<button id="suunnittelu_edellinen_jakso_painike" class="vuorokalenteri_paallys" onclick="suunnittelu_edellinen_ajanjakso()"></button>
+					<button id="suunnittelu_seuraava_jakso_painike" class="vuorokalenteri_paallys" onclick="suunnittelu_seuraava_ajanjakso()"></button>
+				</div>
+				<div id="vuorokalenteri" class="dhx_cal_container" tabindex="0">
+					<div class="dhx_cal_navline">
+						<div class="dhx_cal_date"></div>	
+						<div class="dhx_cal_prev_button piilotettu"></div>
+						<div class="dhx_cal_next_button piilotettu"></div>
+					</div>
+					<div class="dhx_cal_header"></div>
+					<div class="dhx_cal_data"></div>
+				</div>
+				<div id="suunnittelutoimialuepikavalinnat"></div>
+				
+				<div id="vuorokiinnityksetRuutu">
+					<span id="vuorokiinnitykset_aliotsikko">(Vuoron kiinnityksien muokkaus)</span>
+					<span id="vuorokiinnitykset_vuorotiedot"></span>
+					<span id="vuorokiinnitykset_suunniteltuvuoro_id" class="piilotettu"></span>
+					<table id="vuorokiinnityksetlista">
+						<thead>
+							<tr id="vuorokiinnitykset_otsikkorivi">
+								<th></th>
+								<th>Vuorotyyppi</th>
+								<th>Taloudellisuussarake</th>
+								<th>Osastosarake</th>
+								<th>Tausta</th>
+								<th>Kommentti</th>
+							</tr>
+						</thead>
+						<tbody id="vuorokiinnitykset"></tbody>
+					</table>
+				</div>
+				
+				<div id="julkaisuRuutu">
+					<div class="rivikehys">
+						<span class="ruututeksti">Näkyvyys</span>
+						<select id="julkaisu_nakyvyys">
+							<option value="0">Koko Moveon</option>
+							<option value="1" selected>Vain mobiili</option>
+						</select>
+					</div>
+					<div class="rivikehys">
+						<span class="ruututeksti">Mistä</span>
+						<input id="julkaisu_alkupvm" readonly class="pvm_kentta_levea" />
+					</div>
+					<div class="rivikehys">
+						<span class="ruututeksti">Mihin</span>
+						<input id="julkaisu_loppupvm" readonly class="pvm_kentta_levea" />
+					</div>
+					
+					<div class="rivikehys">
+						<img src="css/imgs/loader.gif" id="julkaisuLatausAnimaatio" />
+					</div>
+				</div>
+				
+				<div id="julkaisuYhteenvetoRuutu">
+					<span id="julkaisuyhteenveto_poistetut_teksti" class="ruututeksti_pitka">Poistettu</span>
+					<span id="julkaisuyhteenveto_poistetut" class="ruututeksti_oikea"></span>
+					<span id="julkaisuyhteenveto_paivitetyt_teksti" class="ruututeksti_pitka">Päivitetty</span>
+					<span id="julkaisuyhteenveto_paivitetyt" class="ruututeksti_oikea"></span>
+					<span id="julkaisuyhteenveto_luodut_teksti" class="ruututeksti_pitka">Luotu</span>
+					<span id="julkaisuyhteenveto_luodut" class="ruututeksti_oikea"></span>
+					<span id="julkaisuyhteenveto_yhteensa_teksti" class="ruututeksti_pitka">Yhteensä</span>
+					<span id="julkaisuyhteenveto_yhteensa" class="ruututeksti_oikea"></span>
+					<span id="julkaisuyhteenveto_kiinnitykset_teksti" class="ruututeksti_pitka">Kiinnitykset</span>
+					<span id="julkaisuyhteenveto_kiinnitykset" class="ruututeksti_oikea"></span>
+				</div>
+				
+				<div id="vuorolukituksetRuutu">
+					<span id="vuorolukitukset_aliotsikko">(Vuorot asetetaan lukituksi julkaisun yhteydessä)</span>
+					<table id="vuorolukituksetlista">
+						<thead>
+							<tr id="vuorolukitukset_otsikkorivi">
+								<th>Vuorotyyppi</th>
+								<th>Taloudellisuussarake</th>
+								<th>Osastosarake</th>
+								<th colspan="2"><button id="vuorolukitukset_lisaa_uusi_painike" class="painike" onclick="suunnittelu_nayta_vuorolukitukset_tallennus('')">Lisää uusi</button></th>
+							</tr>
+							<tr id="vuorolukitukset_tallennusrivi">
+								<th><select id="vuorolukitukset_vuorotyyppi_tallennusrivi"></select></th>
+								<th><select id="vuorolukitukset_raportti_osasto_id_tallennusrivi"></select></th>
+								<th><select id="vuorolukitukset_osasto_id_tallennusrivi"></select></th>
+								<th><button id="vuorolukitukset_peruuta_painike" class="painike" onclick="suunnittelu_peruuta_vuorolukitus_tallennus()">Peruuta</button></th>
+								<th><button id="vuorolukitukset_tallenna_painike" class="painike" onclick="suunnittelu_tallenna_vuorolukitus()">Tallenna</button></th>
+							</tr>
+						</thead>
+						<tbody id="vuorolukitukset_data"></tbody>
+					</table>
+				</div>
+				
+				<div id="vuorolukitusPoistoRuutu">
+					<span id="vuorolukituspoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="vuoroyhdistelmatRuutu">
+					<span id="vuoroyhdistelmat_aliotsikko">(Tarkista sallitut näppäimet ja tyypit vuorotyyppi ruudusta)</span>
+					<table id="vuoroyhdistelmatlista">
+						<thead>
+							<tr id="vuoroyhdistelmat_otsikkorivi">
+								<th>Tyyppi</th>
+								<th>Vuorotyypit</th>
+								<th>Kuvaus</th>
+								<th>Väri</th>
+								<th colspan="2"><button id="vuoroyhdistelmat_lisaa_uusi_painike" class="painike" onclick="suunnittelu_nayta_vuoroyhdistelma_tallennus('')">Lisää uusi</button></th>
+							</tr>
+							<tr id="vuoroyhdistelmat_tallennusrivi">
+								<th><input id="vuoroyhdistelmat_tyyppi_tallennusrivi" maxlength=1 /></th>
+								<th><input id="vuoroyhdistelmat_vuorotyypit_tallennusrivi" maxlength=3 /></th>
+								<th><input id="vuoroyhdistelmat_kuvaus_tallennusrivi" /></th>
+								<th><span id="vuoroyhdistelmat_vari_esikatselu_tallennusrivi" class="vari_esikatselu">Valittu väri</span></th>
+								<th><button id="vuoroyhdistelmat_peruuta_painike" class="painike" onclick="suunnittelu_peruuta_vuoroyhdistelma_tallennus()">Peruuta</button></th>
+								<th><button id="vuoroyhdistelmat_tallenna_painike" class="painike" onclick="suunnittelu_tallenna_vuoroyhdistelma()">Tallenna</button></th>
+							</tr>
+						</thead>
+						<tbody id="vuoroyhdistelmat_data"></tbody>
+					</table>
+				</div>
+				
+				<div id="vuoroyhdistelmaPoistoRuutu">
+					<span id="vuoroyhdistelmapoistoid" class="piilotettu"></span>
+				</div>
+		
+				<div id="yhteenvetoRuutu">
+					<table id="yhteenvetotaulu">
+						<thead>
+							<th class="lyhyt">Tyyppi</th>
+							<th class="lyhyt">Määrä</th>
+						<thead>
+						<tbody id="yhteenvetotiedot">
+						</tbody>
+					</table>
+				</div>
+				
+				<div id="vuorotyyppiRuutu">
+					<table id="vuorotyyppitaulu">
+						<thead>
+							<th class="lyhyt">Näppäin</th>
+							<th class="lyhyt">Tyyppi</th>
+							<th class="pitka_teksti">Kuvaus</th>
+						<thead>
+						<tbody id="vuorotyyppitiedot">
+						</tbody>
+					</table>
+				</div>
+				
+				<div id="vuorovarausRuutu">
+					<select id="vuorovaraus_viestit" onchange="suunnittelu_nayta_vuorovaraus_sijaiset()"></select>
+					<div id="vuorovaraus_kaikki_valinta_kehys">
+						<input id="vuorovaraus_kaikki_valinta" type="checkbox" onclick="suunnittelu_vuorovaraus_valitse_kaikki()"/> 
+						<span>Valitse kaikki</span>
+					</div>
+					<button id="vuorovaraus_poista_painike" onclick="suunnittelu_nayta_vuorovaraus_poistoruutu()">Poista valitut</button>
+					<div id="vuorovaraus_sijaiset"></div>
+				</div>
+				
+				<div id="vuorovarauspoistoRuutu">
+					<span>Poistetaanko valitut vuorovarausviestit<span>
+				</div>
+				
+				<div id="vuorosuunnittelulatausRuutu">
+					<img src="css/imgs/loader.gif" class="latausanimaatio" />
+				</div>
+			</div>
+			
+			<!---------------------- Järjestelmänhallinta ---------------------------->
+			
+			<div id="hallintanakyma" class="kehys">
+				<div id="hakusuodatusnakyma">
+					<button id="lisayspainike" class="painike" onclick="hallinta_nayta_lisaysruutu()">+</button>
+					<div id="hallinta_tulostiedot">
+						<span id="tulosTeksti">Rivit yhteensä:</span>
+					</div>
+					<div id="hallinta_tilakehys">
+						<button id="sijaistilapainike" class="tilapainike painike" onclick="hallinta_aseta_tila('sijaistila')">Sissitila</button>
+						<button id="reservitilapainike" class="tilapainike painike" onclick="hallinta_aseta_tila('reservitila')">Reservitila</button>
+						<button id="sihteeritilapainike" class="tilapainike painike" onclick="hallinta_aseta_tila('sihteeritila')">Sihteeritila</button>
+					</div>
+					
+					<div id="hallinta_sijaisetsuodatin">
+						<span id="naytasijaisetvalitaTeksti" class="hallinta_suodatinteksti">Näytä</span>
+						<select id="sijaistentyyppisuodatin" onChange="hallinta_hae_sijaiset()" class="valintakentta hallinta_suodatin">
+							<option value="-1" selected>Kaikki</option>
+							<option value="0">Sihteerit</option>
+							<option value="1">Hoitajat</option>
+							<option value="2">Aktiiviset</option>
+							<option value="3">Ei aktiiviset</option>
+						</select>
+						<span id="toimialuesuodatinTeksti" class="hallinta_suodatinteksti">Toimialue</span>
+						<select id="toimialuesuodatin" onChange="hallinta_hae_sijaiset()" class="valintakentta hallinta_suodatin"></select>					
+						<span id="osastosuodatinTeksti" class="hallinta_suodatinteksti">Osasto</span>
+						<select id="osastosuodatin"  onChange="hallinta_hae_sijaiset()" class="valintakentta hallinta_suodatin"></select>
+						<span id="nimikeSuodatinTeksti" class="hallinta_suodatinteksti">Nimike</span>
+						<select id="nimikesuodatin" onChange="hallinta_hae_sijaiset()" class="valintakentta hallinta_suodatin"></select>
+					</div>
+					
+					<div id="hallinta_reservilaisetsuodatin">
+						<span id="naytareservilaisetvalitaTeksti" class="hallinta_suodatinteksti">Näytä</span>
+						<select id="reservilainentyyppisuodatin" onChange="hallinta_hae_reservilaiset()" class="valintakentta hallinta_suodatin">
+							<option value="-1" selected>Kaikki</option>
+							<option value="0">Aktiiviset</option>
+							<option value="1">Ei aktiiviset</option>
+						</select>
+						<span id="reservi_nimikeSuodatinTeksti" class="hallinta_suodatinteksti">Nimike</span>
+						<select id="reservi_nimikesuodatin" onChange="hallinta_hae_reservilaiset()" class="valintakentta hallinta_suodatin"></select>
+						<span id="reservi_toimialuesuodatinTeksti" class="hallinta_suodatinteksti">Toimialue</span>
+						<select id="reservi_toimialuesuodatin" onChange="hallinta_hae_reservilaiset()" class="valintakentta hallinta_suodatin"></select>		
+					</div>
+					
+					<div id="hallinta_sihteeritsuodatin">
+						<span id="naytasihteeritvalitaTeksti" class="hallinta_suodatinteksti">Näytä</span>
+						<select id="sihteerityyppisuodatin" onChange="hallinta_hae_sihteerit()" class="valintakentta hallinta_suodatin">
+							<option value="-1" selected>Kaikki</option>
+							<option value="0">Aktiiviset</option>
+							<option value="1">Ei aktiiviset</option>
+						</select>
+						<span id="sihteeri_nimikeSuodatinTeksti" class="hallinta_suodatinteksti">Nimike</span>
+						<select id="sihteeri_nimikesuodatin" onChange="hallinta_hae_sihteerit()" class="valintakentta hallinta_suodatin"></select>
+						<span id="sihteeri_palvelualuesuodatinTeksti" class="hallinta_suodatinteksti">Palvelualue</span>
+						<select id="sihteeri_palvelualuesuodatin" onChange="hallinta_hae_sihteerit()" class="valintakentta hallinta_suodatin"></select>		
+					</div>
+					
+					<div id="hallinta_osastotsuodatin">
+						<span id="naytaosastotvalitaTeksti" class="hallinta_suodatinteksti">Näytä</span>
+						<select id="osastotyyppisuodatin" onChange="hallinta_hae_osastot()" class="valintakentta hallinta_suodatin">
+							<option value="-1" selected>Kaikki</option>
+							<option value="0">Aktiiviset</option>
+							<option value="1">Ei aktiiviset</option>
+						</select>
+					</div>
+					
+					<div id="hallinta_kustannuksetsuodatin">
+						<span id="naytakustannuksetvalitaTeksti" class="hallinta_suodatinteksti">Näytä</span>
+						<select id="kustannuksetyyppisuodatin" onChange="hallinta_hae_kustannukset()" class="valintakentta hallinta_suodatin">
+							<option value="-1" selected>Kaikki</option>
+							<option value="0">Hoitaja kustannukset</option>
+							<option value="1">Sihteeri kustannukset</option>
+						</select>
+					</div>
+					
+					<div id="hallinta_hakusuodatin">
+						<select id="hakukohde" class="valintakentta">
+							<option value="kayttajat">Käyttäjät (Tunnus)</option>
+							<option value="sijaiset" class="sijaistila">Sissit (Nimi)</option>
+							<option value="reservilaiset" class="reservitila">Reserviläiset (Nimi)</option>
+							<option value="sihteerit" class="sihteeritila">Sihteerit (Nimi)</option>
+							<option value="nimikkeet">Nimikkeet</option>
+							<option value="toimialueet" class="sijaistila reservitila">Toimialueet</option>
+							<option value="palvelualueet" class="sihteeritila">Palvelualueet</option>
+							<option value="osastot">Osastot</option>
+							<option value="tyomaarat" class="sihteeritila reservitila">Työmäärät (%)</option>
+							<option value="kustannukset" class="sijaistila">Kustannukset (Osasto)</option>
+							<!--<option value="henkilokustannukset" class="sijaistila">Kustannukset (Sissi)</option>-->
+							<option value="kilometrikustannukset" class="sijaistila">Kustannukset (Km hinta)</option>
+							<option value="reservikustannukset" class="reservitila">Reservikustannukset (Osasto)</option>
+							<option value="reservihenkilokustannukset" class="reservitila">Reservikustannukset (Reserviläinen)</option>
+							<option value="sihteerikustannukset" class="sihteeritila">Sihteerikustannukset (Päivämäärät)</option>
+							<option value="sijaisuustaustat" class="sijaistila">Sijaisuustaustat</option>
+							<option value="reservitaustat" class="reservitila">Reservitaustat</option>
+							<option value="vuorotyypit" class="sijaistila">Vuorotyypit</option>
+						</select>
+						<input id="hakukentta" />
+						<button id="hakupainike" class="painike" onclick="hallinta_hae_tiedot()">Hae</button>
+					</div>
+					
+					<div id="hallinta_kustannustilakehys">
+						<button id="osastokustannustilapainike" class="tilapainike painike" onclick="hallinta_aseta_kustannustila('osasto')">Osastokustannukset</button>
+						<button id="henkilokustannustilapainike" class="tilapainike painike" onclick="hallinta_aseta_kustannustila('henkilo')">Henkilökustannukset</button>
+						<button id="kilometrikustannustilapainike" class="tilapainike painike" onclick="hallinta_aseta_kustannustila('kilometri')">Kilometrikustannukset</button>
+					</div>
+				</div>			
+				<div id="navigaatiopalkki">
+					<ul>
+						<li id='kayttajatlehtipainike' class="navpainike" onclick="hallinta_nayta_sisalto('kayttajat',true)">
+							<img src="css/imgs/kayttajat.png" class="navkuvake" />
+							<span class="navteksti">Käyttäjät</span>
+						</li>
+						<li id='sijaisetlehtipainike' class="navpainike sijaistila" onclick="hallinta_nayta_sisalto('sijaiset',true)">
+							<img src="css/imgs/sijaiset.png" class="navkuvake" />
+							<span class="navteksti">Sissit</span>
+						</li>
+						<li id='reservilaisetlehtipainike' class="navpainike reservitila" onclick="hallinta_nayta_sisalto('reservilaiset',true)">
+							<img src="css/imgs/sijaiset.png" class="navkuvake" />
+							<span class="navteksti">Reserviläiset</span>
+						</li>
+						<li id='sihteeritlehtipainike' class="navpainike sihteeritila" onclick="hallinta_nayta_sisalto('sihteerit',true)">
+							<img src="css/imgs/sijaiset.png" class="navkuvake" />
+							<span class="navteksti">Sihteerit</span>
+						</li>
+						<li id='nimikkeetlehtipainike' class="navpainike" onclick="hallinta_nayta_sisalto('nimikkeet',true)">
+							<img src="css/imgs/nimikkeet.png" class="navkuvake" />
+							<span class="navteksti">Nimikkeet</span>
+						</li>
+						<li id='toimialueetlehtipainike' class="navpainike sijaistila reservitila" onclick="hallinta_nayta_sisalto('toimialueet',true)">
+							<img src="css/imgs/toimialueet.png" class="navkuvake" />
+							<span class="navteksti">Toimialueet</span>
+						</li>
+						<li id='palvelualueetlehtipainike' class="navpainike sihteeritila" onclick="hallinta_nayta_sisalto('palvelualueet',true)">
+							<img src="css/imgs/toimialueet.png" class="navkuvake" />
+							<span class="navteksti">Palvelualueet</span>
+						</li>
+						<li id='osastotlehtipainike' class="navpainike" onclick="hallinta_nayta_sisalto('osastot',true)">
+							<img src="css/imgs/osastot.png" class="navkuvake" />
+							<span class="navteksti">Osastot</span>
+						</li>
+						<li id='tyomaaratlehtipainike' class="navpainike reservitila sihteeritila" onclick="hallinta_nayta_sisalto('tyomaarat',true)">
+							<img src="css/imgs/tyomaara.png" class="navkuvake" />
+							<span class="navteksti">Työmäärät</span>
+						</li>
+						<li id='kustannuksetlehtipainike'  class="navpainike sijaistila" onclick="hallinta_nayta_sisalto('kustannukset',true)">
+							<img src="css/imgs/kustannukset.png" class="navkuvake" />
+							<span class="navteksti">Kustannukset</span>
+						</li>
+						<li id='reservikustannuksetlehtipainike'  class="navpainike reservitila" onclick="hallinta_nayta_sisalto('reservikustannukset',true)">
+							<img src="css/imgs/kustannukset.png" class="navkuvake" />
+							<span class="navteksti">Reservikustannukset</span>
+						</li>
+						<li id='sihteerikustannuksetlehtipainike'  class="navpainike sihteeritila" onclick="hallinta_nayta_sisalto('sihteerikustannukset',true)">
+							<img src="css/imgs/kustannukset.png" class="navkuvake" />
+							<span class="navteksti">Sihteerikustannukset</span>
+						</li>
+						<li id='sijaisuustaustatlehtipainike'  class="navpainike sijaistila" onclick="hallinta_nayta_sisalto('sijaisuustaustat',true)">
+							<img src="css/imgs/sijaisuustaustat.png" class="navkuvake" />
+							<span class="navteksti">Sijaisuustaustat</span>
+						</li>
+						<li id='reservitaustatlehtipainike'  class="navpainike reservitila" onclick="hallinta_nayta_sisalto('reservitaustat',true)">
+							<img src="css/imgs/sijaisuustaustat.png" class="navkuvake" />
+							<span class="navteksti">Reservitaustat</span>
+						</li>
+						<li id='vuorotyypitlehtipainike'  class="navpainike sijaistila" onclick="hallinta_nayta_sisalto('vuorotyypit',true)">
+							<img src="css/imgs/vuorotyypit.png" class="navkuvake" />
+							<span class="navteksti">Vuorotyypit</span>
+						</li>
+					</ul>
+				</div>
+			
+				<div id="sisaltokehys">
+					<div id="kayttajatnakyma">
+						<div class="sisaltotaulu">
+							<table id="kayttajat">
+								<thead id="kayttajatotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_kayttaja_jarjestys('tunnus')">Tunnus</th>
+										<th onclick="hallinta_aseta_kayttaja_jarjestys('nakymat')">Oikeudet</th>
+										<th onclick="hallinta_aseta_kayttaja_jarjestys('taustat')">Sijaisuustaustat</th>
+										<th onclick="hallinta_aseta_kayttaja_jarjestys('toimialueet')">Toimialueet</th>
+									</tr>
+								</thead>
+								<tbody id="kayttajadata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="sijaisetnakyma">
+						<div class="sisaltotaulu">
+							<table id="sijaiset">
+								<thead id="sijaisetotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('nimi')">Nimi</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('nimike')" class="lyhyt">Nimike</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('kotiosasto')" class="lyhyt">Kotiosasto</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('muut_osastot')" class="pitka_teksti">Muut os</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('mahd_osastot')" class="pitka_teksti">Mahd os</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('kommentti')">Kommentti</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('iv')" class="lyhyt">IV</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('laakelupa')" class="lyhyt">Lääkelupa</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('puhelin')">Puhelin</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('kiinnitys_sms')" class="lyhyt">SMS</th>
+										<th onclick="hallinta_aseta_sijainen_jarjestys('toimialueet')">Toimialueet</th>
+									</tr>
+								</thead>
+								<tbody id="sijainendata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="reservilaisetnakyma">
+						<div class="sisaltotaulu">
+							<table id="reservilaiset">
+								<thead id="reservilaisetotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_reservilainen_jarjestys('nimi')">Nimi</th>
+										<th onclick="hallinta_aseta_reservilainen_jarjestys('nimike')" class="lyhyt">Nimike</th>
+										<th onclick="hallinta_aseta_reservilainen_jarjestys('vakanssinumero')">Vakanssinumero</th>
+										<th onclick="hallinta_aseta_reservilainen_jarjestys('toimialueet')">Toimialueet</th>
+									</tr>
+								</thead>
+								<tbody id="reservilainendata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="sihteeritnakyma">
+						<div class="sisaltotaulu">
+							<table id="sihteerit">
+								<thead id="sihteeriotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_sihteeri_jarjestys('nimi')">Nimi</th>
+										<th onclick="hallinta_aseta_sihteeri_jarjestys('nimike')" class="lyhyt">Nimike</th>
+										<th onclick="hallinta_aseta_sihteeri_jarjestys('vakanssinumero')">Vakanssinumero</th>
+										<th onclick="hallinta_aseta_sihteeri_jarjestys('palvelualueet')">Palvelualueet</th>
+									</tr>
+								</thead>
+								<tbody id="sihteeridata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="nimikkeetnakyma">	
+						<div class="sisaltotaulu">
+							<table id="nimikkeet">
+								<thead id="nimikeetotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_nimike_jarjestys('lyhenne')">Lyhenne</th>
+										<th onclick="hallinta_aseta_nimike_jarjestys('nimi')">Nimi</th>
+									</tr>
+								</thead>
+								<tbody id="nimikedata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div id="toimialueetnakyma">
+						<div class="sisaltotaulu">
+							<table id="toimialueet">
+								<thead id="toimialueetotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_toimialue_jarjestys('lyhenne')">Lyhenne</th>
+										<th onclick="hallinta_aseta_toimialue_jarjestys('nimi')">Nimi</th>
+										<th onclick="hallinta_aseta_toimialue_jarjestys('vari_hex')">Väri</th>
+									</tr>
+								</thead>
+								<tbody id="toimialuedata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="palvelualueetnakyma">
+						<div class="sisaltotaulu">
+							<table id="palvelualueet">
+								<thead id="palvelualueetotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_palvelualue_jarjestys('kustannusnumero')">Kustannusnumero</th>
+										<th onclick="hallinta_aseta_palvelualue_jarjestys('lyhenne')">Lyhenne</th>
+										<th onclick="hallinta_aseta_palvelualue_jarjestys('nimi')">Nimi</th>
+										<th onclick="hallinta_aseta_palvelualue_jarjestys('vari_hex')">Väri</th>
+									</tr>
+								</thead>
+								<tbody id="palvelualuedata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div id="osastotnakyma">
+						<div class="sisaltotaulu">
+							<table id="osastot">
+								<thead id="osastototsikot">
+									<tr>
+										<th onclick="hallinta_aseta_osasto_jarjestys('lyhenne')">Lyhenne</th>
+										<th onclick="hallinta_aseta_osasto_jarjestys('nimi')">Nimi</th>
+										<th onclick="hallinta_aseta_osasto_jarjestys('raporttinumero')">Raporttinumero</th>
+										<th onclick="hallinta_aseta_osasto_jarjestys('toimialue')">Toimialue</th>
+										<th onclick="hallinta_aseta_osasto_jarjestys('palvelualue')">Palvelualue</th>
+										<th class="sijaistila" onclick="hallinta_aseta_osasto_jarjestys('si_h_kustannus')">H-kustannus</th>
+										<th class="sijaistila" onclick="hallinta_aseta_osasto_jarjestys('si_s_kustannus')">S-kustannus</th>
+										<th class="sihteeritila" onclick="hallinta_aseta_osasto_jarjestys('r_kustannus')">Kustannus</th>
+										<th class="reservitila" onclick="hallinta_aseta_osasto_jarjestys('s_kustannus')">Kustannus</th>
+									</tr>
+								</thead>
+								<tbody id="osastodata">
+								</tbody>
+							</table>
+						</div>	
+					</div>
+					
+					<div id="tyomaaratnakyma">
+						<div class="sisaltotaulu">
+							<table id="tyomaarat">
+								<thead id="tyomaaratotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_tyomaara_jarjestys('prosentti')">Prosentti</th>
+									</tr>
+								</thead>
+								<tbody id="tyomaaradata">
+								</tbody>
+							</table>
+						</div>	
+					</div>
+
+					<div id="kustannuksetnakyma">
+						<div class="sisaltotaulu">
+							<table id="kustannukset">
+								<thead id="kustannusotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_kustannus_jarjestys('raporttinumero')">Raporttinumero</th>
+										<th onclick="hallinta_aseta_kustannus_jarjestys('osasto')">Osasto</th>
+										<th onclick="hallinta_aseta_kustannus_jarjestys('hinta')">Hinta</th>
+										<th onclick="hallinta_aseta_kustannus_jarjestys('alku_pvm')">Alku pvm</th>
+										<th onclick="hallinta_aseta_kustannus_jarjestys('loppu_pvm')">Loppu pvm</th>
+									</tr>
+								</thead>
+								<tbody id="kustannusdata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="henkilokustannuksetnakyma">
+						<div class="sisaltotaulu">
+							<table id="henkilokustannukset">
+								<thead id="henkilokustannusotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_henkilokustannus_jarjestys('sijainen')">Sissi</th>
+										<th onclick="hallinta_aseta_henkilokustannus_jarjestys('hinta')">Hinta</th>
+										<th onclick="hallinta_aseta_henkilokustannus_jarjestys('alku_pvm')">Alku pvm</th>
+										<th onclick="hallinta_aseta_henkilokustannus_jarjestys('loppu_pvm')">Loppu pvm</th>
+									</tr>
+								</thead>
+								<tbody id="henkilokustannusdata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div id="kilometrikustannuksetnakyma">
+						<div class="sisaltotaulu">
+							<table id="kilometrikustannukset">
+								<thead id="kilometrikustannusotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_kilometrikustannus_jarjestys('tyyppi')">Tyyppi</th>
+										<th onclick="hallinta_aseta_kilometrikustannus_jarjestys('hinta')">Hinta</th>
+										<th onclick="hallinta_aseta_kilometrikustannus_jarjestys('alku_pvm')">Alku pvm</th>
+										<th onclick="hallinta_aseta_kilometrikustannus_jarjestys('loppu_pvm')">Loppu pvm</th>
+									</tr>
+								</thead>
+								<tbody id="kilometrikustannusdata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="reservikustannuksetnakyma">
+						<div class="sisaltotaulu">
+							<table id="reservikustannukset">
+								<thead id="reservikustannusotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_reservikustannus_jarjestys('raporttinumero')">Raporttinumero</th>
+										<th onclick="hallinta_aseta_reservikustannus_jarjestys('osasto')">Osasto</th>
+										<th onclick="hallinta_aseta_reservikustannus_jarjestys('hinta')">Hinta</th>
+										<th onclick="hallinta_aseta_reservikustannus_jarjestys('alku_pvm')">Alku pvm</th>
+										<th onclick="hallinta_aseta_reservikustannus_jarjestys('loppu_pvm')">Loppu pvm</th>
+									</tr>
+								</thead>
+								<tbody id="reservikustannusdata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="reservihenkilokustannuksetnakyma">
+						<div class="sisaltotaulu">
+							<table id="reservihenkilokustannukset">
+								<thead id="reservihenkilokustannusotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_reservihenkilokustannus_jarjestys('reservilainen')">Reserviläinen</th>
+										<th onclick="hallinta_aseta_reservihenkilokustannus_jarjestys('hinta')">Hinta</th>
+										<th onclick="hallinta_aseta_reservihenkilokustannus_jarjestys('alku_pvm')">Alku pvm</th>
+										<th onclick="hallinta_aseta_reservihenkilokustannus_jarjestys('loppu_pvm')">Loppu pvm</th>
+									</tr>
+								</thead>
+								<tbody id="reservihenkilokustannusdata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="sihteerikustannuksetnakyma">
+						<div class="sisaltotaulu">
+							<table id="sihteerikustannukset">
+								<thead id="sihteerikustannusotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_sihteerikustannus_jarjestys('hinta')">Hinta</th>
+										<th onclick="hallinta_aseta_sihteerikustannus_jarjestys('alku_pvm')">Alku pvm</th>
+										<th onclick="hallinta_aseta_sihteerikustannus_jarjestys('loppu_pvm')">Loppu pvm</th>
+									</tr>
+								</thead>
+								<tbody id="sihteerikustannusdata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="sijaisuustaustatnakyma">
+						<div class="sisaltotaulu">
+							<table id="sijaisuustaustat">
+								<thead id="sijaisuustaustatotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_sijaisuustausta_jarjestys('selite')">Selite</th>
+										<th onclick="hallinta_aseta_sijaisuustausta_jarjestys('numero')">Numero</th>
+									</tr>
+								</thead>
+								<tbody id="sijaisuustaustadata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
+					<div id="reservitaustatnakyma">
+						<div class="sisaltotaulu">
+							<table id="reservitaustat">
+								<thead id="reservitaustatotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_reservitausta_jarjestys('selite')">Selite</th>
+										<th onclick="hallinta_aseta_reservitausta_jarjestys('numero')">Numero</th>
+									</tr>
+								</thead>
+								<tbody id="reservitaustadata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div id="vuorotyypitnakyma">
+						<div class="sisaltotaulu">
+							<table id="vuorotyypit">
+								<thead id="vuorotyypitotsikot">
+									<tr>
+										<th onclick="hallinta_aseta_vuorotyypit_jarjestys('tyyppi')">Tyyppi</th>
+										<th onclick="hallinta_aseta_vuorotyypit_jarjestys('kuvaus')">Kuvaus</th>
+										<th onclick="hallinta_aseta_vuorotyypit_jarjestys('vari_hex')">Väri</th>
+										<th onclick="hallinta_aseta_vuorotyypi_jarjestys('vuoronakymassa')">Vuoronäkymässä</th>
+										<th class="piilotettu"></th>
+									</tr>
+								</thead>
+								<tbody id="vuorotyyppidata">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				<div id="lisaysruutu">
+					<button class="ruutulisayspainike" onclick="hallinta_nayta_valittu_lisaysruutu('kayttajat')">Käyttäjä</button>
+					<button class="ruutulisayspainike sijaistila" onclick="hallinta_nayta_valittu_lisaysruutu('sijaiset')">Sissi</button>
+					<button class="ruutulisayspainike reservitila" onclick="hallinta_nayta_valittu_lisaysruutu('reservilaiset')">Reserviläinen</button>
+					<button class="ruutulisayspainike sihteeritila" onclick="hallinta_nayta_valittu_lisaysruutu('sihteerit')">Sihteeri</button>
+					<button class="ruutulisayspainike" onclick="hallinta_nayta_valittu_lisaysruutu('nimikkeet')">Nimike</button>
+					<button class="ruutulisayspainike sijaistila reservitila" onclick="hallinta_nayta_valittu_lisaysruutu('toimialueet')">Toimialue</button>
+					<button class="ruutulisayspainike sihteeritila" onclick="hallinta_nayta_valittu_lisaysruutu('palvelualueet')">Palvelualue</button>
+					<button class="ruutulisayspainike" onclick="hallinta_nayta_valittu_lisaysruutu('osastot')">Osasto</button>
+					<button class="ruutulisayspainike reservitila sihteeritila" onclick="hallinta_nayta_valittu_lisaysruutu('tyomaarat')">Työmäärä</button>
+					<button class="ruutulisayspainike sijaistila" onclick="hallinta_nayta_valittu_lisaysruutu('kustannukset')">Kustannus</button>
+					<!--<button class="ruutulisayspainike sijaistila" onclick="hallinta_nayta_valittu_lisaysruutu('henkilokustannukset')">Henkilökustannus</button>-->
+					<button class="ruutulisayspainike sijaistila" onclick="hallinta_nayta_valittu_lisaysruutu('kilometrikustannukset')">Kilometrikustannus</button>
+					<button class="ruutulisayspainike reservitila" onclick="hallinta_nayta_valittu_lisaysruutu('reservikustannukset')">Reservikustannus</button>
+					<button class="ruutulisayspainike reservitila" onclick="hallinta_nayta_valittu_lisaysruutu('reservihenkilokustannukset')">Reservihenkilökustannus</button>
+					<button class="ruutulisayspainike sihteeritila" onclick="hallinta_nayta_valittu_lisaysruutu('sihteerikustannukset')">Sihteerikustannus</button>
+					<button class="ruutulisayspainike sijaistila sihteeritila" onclick="hallinta_nayta_valittu_lisaysruutu('sijaisuustaustat')">Sijaisuustausta</button>
+					<button class="ruutulisayspainike reservitila" onclick="hallinta_nayta_valittu_lisaysruutu('reservitaustat')">Reservitausta</button>
+					<button class="ruutulisayspainike sijaistila" onclick="hallinta_nayta_valittu_lisaysruutu('vuorotyypit')">Vuoro</button>
+				</div>
+					
+				<div id="kayttajaTietoRuutu">
+					<span id="kayttajaid" class="piilotettu"></span>
+					<div class="rivikehys">
+						<span id="kayttajatunnusTeksti"  class="ruututeksti_pitka">Tunnus</span>
+						<input id="kayttajatunnus" class="ruutukentta" />
+					</div>	
+					<div class="rivikehys">
+						<span id="kayttajasalasanaTeksti"  class="ruututeksti_pitka">Uusi Salasana</span>
+						<input id="kayttajasalasana" type="password" class="ruutukentta" />
+					</div>
+					<div class="rivikehys">
+						<span id="salasanatarkistusTeksti" class="ruututeksti_pitka">Salasanan tarkistus</span>
+						<input id="salasanatarkistus" type="password" class="ruutukentta" />
+					</div>								
+					<div class="rivikehys">
+						<span id="kayttajanakymatTeksti" class="ruututeksti_pitka">Oikeudet</span>
+						<div id="kayttajanakymat"></div>	
+					</div>
+					<div class="rivikehys">
+						<span id="kayttajasijaisuustaustatTeksti" class="ruututeksti_pitka">Sijaisuustaustat</span>
+						<div id="kayttajasijaisuustaustat"></div>
+					</div>	
+					<div class="rivikehys">
+						<span id="kayttajatoimialueetTeksti" class="ruututeksti_pitka">Toimialueet</span>
+						<div id="kayttajatoimialueet"></div>		
+					</div>
+				</div>
+					
+				<div id="kayttajaPoistoRuutu">
+					<span id="kayttajapoistoid" class="piilotettu"></span>
+				</div>
+			
+				<div id="sijainenTietoRuutu">
+					<span id="sijainenid" class="piilotettu"></span>
+					<div class="rivikehys">
+						<span id="sijainenpaikallaviimeksiTeksti"  class="ruututeksti_pitka">Paikalla viimeksi</span>
+						<span id="sijainenpaikallaviimeksi"  class="ruutukentta_pitka"></span>
+					</div>
+					<div class="rivikehys">
+						<span id="sijainennimiTeksti"  class="ruututeksti_pitka">Nimi</span>
+						<input id="sijainennimi" class="ruutukentta_pitka" />
+					</div>
+					<div class="rivikehys">
+						<span id="sijainennimikeTeksti"  class="ruututeksti_pitka">Nimike</span>
+						<select id="sijainennimike"  class="valintakentta"></select>
+					</div>
+					<div class="rivikehys">
+						<span id="sijainentoimialueetTeksti" class="ruututeksti_pitka">Toimialueet</span>
+						<div id="sijainentoimialueet"></div>		
+					</div>					
+					<div class="rivikehys">
+						<span id="sijainenkotiosastoTeksti" class="ruututeksti_pitka">Kotiosasto</span>
+						<select id="sijainenkotiosasto" class="valintakentta" onchange='hallinta_piilotaOsasto()'><select>
+					</div>
+					<div class="rivikehys">
+						<span id="sijainenpaatoimialueTeksti" class="ruututeksti_pitka">Päätoimialue</span>
+						<span id="sijainenpaatoimialue" class="ruututeksti_oikea"><span>
+					</div>	
+					<div class="rivikehys">
+						<span id="sijainenmuutosastotTeksti" class="ruututeksti_pitka">Muut osastot</span>
+						<div id="sijainenmuutosastot"></div>		
+					</div>
+					<div class="rivikehys">
+						<span id="sijainenmahdosastotTeksti" class="ruututeksti_pitka">Mahdolliset osastot</span>
+						<div id="sijainenmahdosastot"></div>		
+					</div>
+					<div class="rivikehys">
+						<div id="ivvalintaKehys">
+							<span id="sijainenivTeksti" class="ruututeksti_pitka">IV</span>
+							<div class="reuna">
+								<div class="radiopainike">
+									<input id="sijainen_iv_valinta_0" type="radio" name="ivvalinta" />
+									<span>Ei IV:tä</span>
+								</div>
+								<div class="radiopainike">
+									<input id="sijainen_iv_valinta_1" type="radio" name="ivvalinta" />
+									<span>IV+</span>
+								</div>
+								<div class="radiopainike">
+									<input id="sijainen_iv_valinta_2" type="radio" name="ivvalinta" />
+									<span>IV-</span>
+								</div>
+								<div class="radiopainike">
+									<input id="sijainen_iv_valinta_3" type="radio" name="ivvalinta" />
+									<span>Nesteytysseuranta</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="rivikehys">
+						<div id="laakelupavalintaKehys">
+							<span id="sijainenlaakelupaTeksti" class="ruututeksti_pitka">Lääkelupa</span>
+							<div class="reuna">
+								<div class="radiopainike">
+									<input id="sijainen_laakelupa_valinta_0" type="radio" name="laakelupavalinta" />
+									<span>Lääkl-</span>
+								</div>
+								<div class="radiopainike">
+									<input id="sijainen_laakelupa_valinta_1" type="radio" name="laakelupavalinta" />
+									<span>Lääkl+</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="rivikehys">
+						<span id="sijainenkommenttiTeksti" class="ruututeksti_pitka">Kommentti</span>
+						<textarea id="sijainenkommentti"></textarea>
+					</div>						
+					<div class="rivikehys">
+						<span id="sijainenpuhnroTeksti"  class="ruututeksti_pitka">Puhelinnumero</span>
+						<input id="sijainenpuhnro" class="ruutukentta" />
+					</div>
+					<div class="rivikehys">
+						<div id="sijainensmsvalinta">
+							<span id="sijainensmsTeksti" class="ruututeksti_pitka">SMS</span>
+							<input id="sijainensms_valinta" type="checkbox" /><span id="sijainensmsvalintaTeksti">Lähetetään kiinnityksestä</span>
+						</div>
+					</div>
+					<div class="rivikehys">
+						<span id="sijainenpinTeksti" class="ruututeksti_pitka">Pin koodi:</span>
+						<span id="sijainenpin" class="ruututeksti_oikea"></span>
+						<button id="sijainenpinpainike" onclick="hallinta_generoi_sijaiselle_pin()">Generoi koodi</button>
+					</div>
+					<div class="rivikehys">
+						<div id="sijainentilavalinta">
+							<span id="sijainentilaTeksti" class="ruututeksti_pitka">Tila</span>
+							<div id="sijainenaktiivinenvalintaKehys">
+								<input id="sijainenaktiivinen_valinta" type="checkbox" />
+								<span id="sijainenaktiivinenvalintaTeksti">Aktiivinen</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="sijainenTilaRuutu">
+					<span id="sijainentilaselitysTeksti">Sissi poistetaan vuorosuunnittelusta</span>
+				</div>
+					
+				<div id="sijainenPoistoRuutu">
+					<span id="sijainenpoistoid" class="piilotettu"></span>
+					<span>HUOM! Sissin vuorot poistetaan.</span>
+				</div>
+
+				<div id="reservilainenTietoRuutu">
+					<span id="reservilainenid" class="piilotettu"></span>
+					<div class="rivikehys">
+						<span id="reservilainenvakanssinumeroTeksti" class="ruututeksti_pitka">Vakanssinumero</span>
+						<input id="reservilainenvakanssinumero" class="ruutukentta_pitka" />
+					</div>
+					<div class="rivikehys">
+						<span id="reservilainennimiTeksti"  class="ruututeksti_pitka">Nimi</span>
+						<input id="reservilainennimi" class="ruutukentta_pitka" />
+					</div>
+					<div class="rivikehys">
+						<span id="reservilainennimikeTeksti"  class="ruututeksti_pitka">Nimike</span>
+						<select id="reservilainennimike" class="valintakentta"></select>
+					</div>
+					<div class="rivikehys">
+						<span id="reservilainentoimialueetTeksti" class="ruututeksti_pitka">Toimialueet</span>
+						<div id="reservilainentoimialueet"></div>		
+					</div>	
+					<div id="reservilainentilavalinta">
+						<span id="reservilainentilaTeksti" class="ruututeksti_pitka">Tila</span>
+						<div id="reservilainenaktiivinenvalintaKehys">
+							<input id="reservilainenaktiivinen_valinta" type="checkbox" />
+							<span id="reservilainenaktiivinenvalintaTeksti">Aktiivinen</span>
+						</div>
+					</div>
+				</div>
+				
+				<div id="reservilainenTilaRuutu">
+					<span id="reservilainentilaselitysTeksti">Reserviläinen poistetaan reservinäkymästä</span>
+				</div>
+				
+				<div id="reservilainenPoistoRuutu">
+					<span id="reservilainenpoistoid" class="piilotettu"></span>
+					<span>HUOM! Reserviläisen jaksot poistetaan.</span>
+				</div>
+				
+				<div id="sihteeriTietoRuutu">
+					<span id="sihteeriid" class="piilotettu"></span>
+					<div class="rivikehys">
+						<span id="sihteerivakanssinumeroTeksti" class="ruututeksti_pitka">Vakanssinumero</span>
+						<input id="sihteerivakanssinumero" class="ruutukentta_pitka" />
+					</div>
+					<div class="rivikehys">
+						<span id="sihteerinimiTeksti"  class="ruututeksti_pitka">Nimi</span>
+						<input id="sihteerinimi" class="ruutukentta_pitka" />
+					</div>
+					<div class="rivikehys">
+						<span id="sihteerinimikeTeksti" class="ruututeksti_pitka">Nimike</span>
+						<select id="sihteerinimike" class="valintakentta"></select>
+					</div>
+					<div class="rivikehys">
+						<span id="sihteeripalvelualueetTeksti" class="ruututeksti_pitka">Palvelualueet</span>
+						<div id="sihteeripalvelualueet"></div>		
+					</div>	
+					<div id="sihteeritilavalinta">
+						<span id="sihteeritilaTeksti" class="ruututeksti_pitka">Tila</span>
+						<div id="sihteeriaktiivinenvalintaKehys">
+							<input id="sihteeriaktiivinen_valinta" type="checkbox" />
+							<span id="sihteeriaktiivinenvalintaTeksti">Aktiivinen</span>
+						</div>
+					</div>
+				</div>
+				
+				<div id="sihteeriTilaRuutu">
+					<span id="sihteeritilaselitysTeksti">Sihteeri poistetaan sihteerinäkymästä</span>
+				</div>
+				
+				<div id="sihteeriPoistoRuutu">
+					<span id="sihteeripoistoid" class="piilotettu"></span>
+					<span>HUOM! Sihteerin jaksot poistetaan.</span>
+				</div>
+					
+				<div id="nimikeTietoRuutu">
+					<div class="ruututausta">
+						<span id="nimikeid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="nimikelyhytnimiTeksti" class="ruututeksti_pitka">Lyhenne</span>
+							<input id="nimikelyhytnimi" class="ruutukentta_pitka" />
+						</div>
+						<div class="rivikehys">
+							<span id="nimikekokonimiTeksti" class="ruututeksti_pitka">Nimi</span>
+							<input id="nimikekokonimi" class="ruutukentta_pitka" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="nimikePoistoRuutu">
+					<span id="nimikepoistoid" class="piilotettu"></span>
+				</div>
+					
+				<div id="osastoTietoRuutu">
+					<div class="ruututausta">
+						<span id="osastoid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="osastolyhenneTeksti" class="ruututeksti_pitka">Lyhenne</span>
+							<input id="osastolyhenne" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="osastonimiTeksti" class="ruututeksti_pitka">Nimi</span>
+							<input id="osastonimi" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="osastoraporttinumeroTeksti" class="ruututeksti_pitka">Raporttinumero</span>
+							<input id="osastoraporttinumero" maxlength="4" class="ruutukentta vain_numero" />
+						</div>
+						<div class="rivikehys">
+							<span id="osastotoimialueTeksti" class="ruututeksti_pitka">Toimialue</span>
+							<select id="osastotoimialue" class="valintakentta"></select>
+						</div>
+						<div class="rivikehys">
+							<span id="osastopalvelualueTeksti" class="ruututeksti_pitka">Palvelualue</span>
+							<select id="osastopalvelualue" class="valintakentta"></select>
+						</div>
+						<div class="rivikehys">
+							<div id="osastotilavalinta">
+								<span id="osastotilaTeksti" class="ruututeksti_pitka">Tila</span>
+								<div id="osastoaktiivinenvalintaKehys">
+									<input id="osastoaktiivinen_valinta" type="checkbox" />
+									<span id="osastoaktiivinenvalintaTeksti">Aktiivinen</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+				<div id="osastoPoistoRuutu">
+					<span id="osastopoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="tyomaaraTietoRuutu">
+					<div class="ruututausta">
+						<span id="tyomaaraid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="tyomaaranimiTeksti" class="ruututeksti">Prosentti</span>
+							<input id="tyomaaraprosentti" class="ruutukentta" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="tyomaaraPoistoRuutu">
+					<span id="tyomaarapoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="kustannusTietoRuutu">
+					<div class="ruututausta">
+						<span id="kustannusid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="kustannusosastoTeksti" class="ruututeksti_pitka">Osasto</span>
+							<select id="kustannusosasto" class="valintakentta"></select>
+						</div>
+						<div class="rivikehys">
+							<span id="kustannushintaTeksti" class="ruututeksti_pitka">Hinta</span>
+							<input id="kustannushinta" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="kustannusalkupvmTeksti" class="ruututeksti_pitka">Alku pvm</span>
+							<input id="kustannusalkupvm" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="kustannusloppupvmTeksti" class="ruututeksti_pitka">Loppu pvm</span>
+							<input id="kustannusloppupvm" class="ruutukentta" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="kustannusPoistoRuutu">
+					<span id="kustannuspoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="henkilokustannusTietoRuutu">
+					<div class="ruututausta">
+						<span id="henkilokustannusid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="henkilokustannussijainenTeksti" class="ruututeksti_pitka">Sissi</span>
+							<select id="henkilokustannussijainen" class="valintakentta"></select>
+						</div>
+						<div class="rivikehys">
+							<span id="henkilokustannushintaTeksti" class="ruututeksti_pitka">Hinta</span>
+							<input id="henkilokustannushinta" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="henkilokustannusalkupvmTeksti" class="ruututeksti_pitka">Alku pvm</span>
+							<input id="henkilokustannusalkupvm" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="henkilokustannusloppupvmTeksti" class="ruututeksti_pitka">Loppu pvm</span>
+							<input id="henkilokustannusloppupvm" class="ruutukentta" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="henkilokustannusPoistoRuutu">
+					<span id="henkilokustannuspoistoid" class="piilotettu"></span>
+				</div>
+
+				<div id="kilometrikustannusTietoRuutu">
+					<div class="ruututausta">
+						<span id="kilometrikustannusid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="kilometrikustannustyyppiTeksti" class="ruututeksti_pitka">Tyyppi</span>
+							<select id="kilometrikustannustyyppi" class="valintakentta">
+								<option value="-1" selected>Valitse</option>
+								<option value="0">Alle 5000km</option>
+								<option value="1">Yli 5000km</option>
+								<option value="2">Alle 7000km</option>
+								<option value="3">Yli 7000km</option>
+							</select>
+						</div>
+						<div class="rivikehys">
+							<span id="kilometrikustannushintaTeksti" class="ruututeksti_pitka">Hinta</span>
+							<input id="kilometrikustannushinta" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="kilometrikustannusalkupvmTeksti" class="ruututeksti_pitka">Alku pvm</span>
+							<input id="kilometrikustannusalkupvm" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="kilometrikustannusloppupvmTeksti" class="ruututeksti_pitka">Loppu pvm</span>
+							<input id="kilometrikustannusloppupvm" class="ruutukentta" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="kilometrikustannusPoistoRuutu">
+					<span id="kilometrikustannuspoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="reservikustannusTietoRuutu">
+					<div class="ruututausta">
+						<span id="reservikustannusid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="reservikustannusosastoTeksti" class="ruututeksti_pitka">Osasto</span>
+							<select id="reservikustannusosasto" class="valintakentta"></select>
+						</div>
+						<div class="rivikehys">
+							<span id="reservikustannushintaTeksti" class="ruututeksti_pitka">Hinta</span>
+							<input id="reservikustannushinta" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="reservikustannusalkupvmTeksti" class="ruututeksti_pitka">Alku pvm</span>
+							<input id="reservikustannusalkupvm" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="reservikustannusloppupvmTeksti" class="ruututeksti_pitka">Loppu pvm</span>
+							<input id="reservikustannusloppupvm" class="ruutukentta" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="reservikustannusPoistoRuutu">
+					<span id="reservikustannuspoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="reservihenkilokustannusTietoRuutu">
+					<div class="ruututausta">
+						<span id="reservihenkilokustannusid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="reservihenkilokustannusreservilainenTeksti" class="ruututeksti_pitka">Reserviläinen</span>
+							<select id="reservihenkilokustannusreservilainen" class="valintakentta"></select>
+						</div>
+						<div class="rivikehys">
+							<span id="reservihenkilokustannushintaTeksti" class="ruututeksti_pitka">Hinta</span>
+							<input id="reservihenkilokustannushinta" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="reservihenkilokustannusalkupvmTeksti" class="ruututeksti_pitka">Alku pvm</span>
+							<input id="reservihenkilokustannusalkupvm" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="reservihenkilokustannusloppupvmTeksti" class="ruututeksti_pitka">Loppu pvm</span>
+							<input id="reservihenkilokustannusloppupvm" class="ruutukentta" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="reservihenkilokustannusPoistoRuutu">
+					<span id="reservihenkilokustannuspoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="sihteerikustannusTietoRuutu">
+					<div class="ruututausta">
+						<span id="sihteerikustannusid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="sihteerikustannushintaTeksti" class="ruututeksti_pitka">Hinta</span>
+							<input id="sihteerikustannushinta" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="sihteerikustannusalkupvmTeksti" class="ruututeksti_pitka">Alku pvm</span>
+							<input id="sihteerikustannusalkupvm" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="sihteerikustannusloppupvmTeksti" class="ruututeksti_pitka">Loppu pvm</span>
+							<input id="sihteerikustannusloppupvm" class="ruutukentta" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="sihteerikustannusPoistoRuutu">
+					<span id="sihteerikustannuspoistoid" class="piilotettu"></span>
+				</div>
+
+				<div id="toimialueTietoRuutu">
+					<div class="ruututausta">
+						<span id="toimialueid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="toimialuelyhenneTeksti" class="ruututeksti_pitka">Lyhenne</span>
+							<input id="toimialuelyhenne" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="toimialuenimiTeksti" class="ruututeksti_pitka">Nimi</span>
+							<input id="toimialuenimi" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="toimialuevariTeksti" class="ruututeksti_pitka">Väri</span>
+							<span id="toimialuevari" class="vari_esikatselu">Valittu väri</span>
+						</div>
+						<div id="toimialuetilavalinta">
+							<span id="toimialuetilaTeksti" class="ruututeksti_pitka">Tila</span>
+							<div id="toimialueaktiivinenvalintaKehys">
+								<input id="toimialueaktiivinen_valinta" type="checkbox" />
+								<span id="toimialueaktiivinenvalintaTeksti">Aktiivinen</span>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+				<div id="toimialuePoistoRuutu">
+					<span id="toimialuepoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="palvelualueTietoRuutu">
+					<div class="ruututausta">
+						<span id="palvelualueid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="palvelualuekustannusnumeroTeksti" class="ruututeksti">Kustannusnro</span>
+							<input id="palvelualuekustannusnumero" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="palvelualuelyhenneTeksti" class="ruututeksti">Lyhenne</span>
+							<input id="palvelualuelyhenne" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="palvelualuenimiTeksti" class="ruututeksti">Nimi</span>
+							<input id="palvelualuenimi" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="palvelualuevariTeksti" class="ruututeksti">Väri</span>
+							<span id="palvelualuevari" class="vari_esikatselu">Valittu väri</span>
+						</div>
+					</div>
+				</div>
+					
+				<div id="palvelualuePoistoRuutu">
+					<span id="palvelualuepoistoid" class="piilotettu"></span>
+				</div>
+
+				<div id="sijaisuustaustaTietoRuutu">
+					<div class="ruututausta">
+						<span id="sijaisuustaustaid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="sijaisuustaustaseliteTeksti" class="ruututeksti">Selite</span>
+							<input id="sijaisuustaustaselite" class="ruutukentta" />
+						</div>				
+						<div class="rivikehys">
+							<span id="sijaisuustaustanumeroTeksti" class="ruututeksti">Numero</span>
+							<input id="sijaisuustaustanumero" class="ruutukentta vain_numero" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="sijaisuustaustaPoistoRuutu">
+					<span id="sijaisuustaustapoistoid" class="piilotettu"></span>
+				</div>
+				
+				<div id="reservitaustaTietoRuutu">
+					<div class="ruututausta">
+						<span id="reservitaustaid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="reservitaustaseliteTeksti" class="ruututeksti">Selite</span>
+							<input id="reservitaustaselite" class="ruutukentta" />
+						</div>
+						
+						<div class="rivikehys">
+							<span id="reservitaustanumeroTeksti" class="ruututeksti">Numero</span>
+							<input id="reservitaustanumero" class="ruutukentta vain_numero" />
+						</div>
+					</div>
+				</div>
+					
+				<div id="reservitaustaPoistoRuutu">
+					<span id="reservitaustapoistoid" class="piilotettu"></span>
+				</div>
+					
+				<div id="vuorotyyppiTietoRuutu">
+					<div class="ruututausta">
+						<span id="vuoroid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="vuorotyyppiTeksti" class="ruututeksti">Tyyppi</span>
+							<input id="vuorotyyppi" maxlength="1", onChange="hallinta_muutaKirjainKoko()"  class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="vuorokuvausTeksti" class="ruututeksti">Kuvaus</span>
+							<input id="vuorokuvaus" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="vuorovariTeksti" class="ruututeksti">Väri</span>
+							<span id="vuorovari" class="vari_esikatselu">Valittu väri</span>
+						</div>
+						<div class="rivikehys">
+							<span id="vuoronakyvissaTeksti" class="ruututeksti">Vuoronäkymässä</span>
+							
+							<div id="vuoronakymassavalintaKehys">
+								<input id="vuoronakyvissa" type="checkbox" />
+								<span id="vuoronakyvissaTeksti">Näkyissä kaikille (#, jos ei valittu)</span>
+							</div>
+						</div>						
+					</div>
+				</div>
+					
+				<div id="vuorotyyppiPoistoRuutu">
+					<span id="vuoropoistoid" class="piilotettu"></span>
+				</div>
+			</div>
+			
+			<!------------ Loki näkymä ---------------------------------->
+			<div id="lokinakyma" class="kehys">
+				<div id="lokikehys">
+					<div id="lokinakymavalikkoKehys">
+						
+					</div>
+					<div id="lokivalintaKehys">
+						<div id="lokivalintatauluKehys">
+							<table>
+								<thead>
+									<tr>
+										<th>Näkymä</th>
+										<th>Käyttäjä</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><select id="lokinakymavalinta" onchange="loki_hae_tapahtumavalinnat()"></select></td>
+										<td><select id="lokikayttajavalinta" ></select></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div id="lokitapahtumaKehys">
+							<span id="lokitapahumavalintaTeksti">Tapahtumat</span>
+							<div id="lokitapahtumavalintakehys">
+								<input id="lokivalitsetapahtumat" type="checkbox" />
+								<span id="lokikaikkitapahtumatTeksti">Valitse kaikki</span>
+							</div>
+							<div id="lokitapahtumavalinnat"></div>
+						</div>
+						<div id="lokiaikavaliKehys">
+							<span id="lokiaikavaliTeksti">Aikaväli</span>
+							<input id="lokialkupvm" class="pvm_kentta" value="" readonly />
+							<span id="lokipvmvali"> - </span>
+							<input id="lokiloppupvm" class="pvm_kentta" value="" readonly />
+							<div id="lokikalenteri"></div>
+						</div>
+						<button id="haeLokiKirjauksetPainike" class="painike_suuri" onclick="loki_hae_kirjaukset()">Hae kirjaukset</button>
+					</div>
+					<div id="lokikirjauksetKehys">
+						<div class="sisaltotaulu">
+							<table id="lokikirjaukset">
+								<thead id="lokikirjausotsikot">
+									<tr>
+										<th>
+											<div id="lokinakymavalikkoPainike" onclick="loki_aseta_haku_nakyvyys()">
+												<div class="valikkopalkki"></div>
+												<div class="valikkopalkki"></div>
+												<div class="valikkopalkki"></div>
+											</div>
+										</th>
+										<th></th>
+										<th></th>
+										<th>
+											<div class="suodatinkehys">
+												<input id="lokitunnistesuodatin" value="" placeholder="Tunnistesuodatin" class="suodatinkentta" />
+												<div id="lokitunnistesuodatinValikko" class="suodatinvalikko"></div>
+											</div>
+										</th>
+										<th>
+											<div class="suodatinkehys">
+												<input id="lokitietosuodatin" value="" placeholder="Tietosuodatin" class="suodatinkentta" />
+												<div id="lokitietosuodatinValikko" class="suodatinvalikko"></div>
+											</div>
+										</th>
+										<th>
+											<img id="lokikirjaussuodatinKuvake" src="css/imgs/suodata.png" onclick="loki_suodata_kirjaukset()" title="Suodata">
+										</th>
+									</tr>
+									<tr>
+										<th>Aika</th>
+										<th>Käyttäjä</th>
+										<th>Tapahtuma</th>
+										<th>Tunniste</th>
+										<th>Edellinen</th>
+										<th>Nykyinen</th>
+									</tr>
+								</thead>
+								<tbody id="lokikirjausdata">
+								</tbody>
+							</table>
+						</div>
+						<div class="sisaltotaulu_alapalkki">
+							<span id="lokikirjauslukumaaraTeksti">Rivit yhteensä:</span>
+							<span id="lokikirjausrivimaara">0</span>
+							<span id="lokikirjauslukumaaravalimerkki">/</span>
+							<span id="lokikirjausrivimaarayhteensa">0</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!------------ Raportointi näkymä ------------------------------>
+			<div id="raportointinakyma" class="kehys">
+				<div id="raportointi_ylanakyma">
+					<div id="raportointi_ylanakyma_valinnat">
+						<select id="raportointiraporttivalinta" class="valintakentta" onchange="raportointi_aseta_raportti_tyyppi()">
+							<option value="-1" selected>Valitse raportti</option>
+							<optgroup label="Sijaisraportit">
+								<option value="0">Taloudellinen raportti</option>
+								<option value="1">Sijaissyyraportti</option>
+								<option value="2">Kotiosastoraportti</option>
+								<option value="11">Matkakustannusraportti</option>
+							</optgroup>
+							<optgroup label="Reserviläisraportit">
+								<option value="3">Taloudellinen raportti</option>
+								<option value="4">Reservisyyraportti</option>
+								<option value="5">Työmääräraportti</option>
+							</optgroup>
+							<optgroup label="Sihteeriraportit">
+								<option value="6">Taloudellinen raportti</option>
+								<option value="7">Alijaksoraportti</option>
+							</optgroup>
+							<optgroup label="Järjestelmäraportit">
+								<option value="12">Pin-koodi raportti</option>
+							</optgroup>
+						</select>
+						
+						<div id="raportointivalinnatKehys">
+							<div id="raportointivuosikuukausi"></div> 
+							<div id="raportointiaikavaliKehys">
+								<input id="raportointialkupvm" class="pvm_kentta" value="" readonly placeholder="Aloitus pvm" />
+								<span id="raportointipvmvali"> - </span>
+								<input id="raportointiloppupvm" class="pvm_kentta" value="" readonly placeholder="Loppu pvm" />
+							</div>
+							<div id="raportointikalenterivalinta" onclick="raportointi_vaihda_aikavali_tilaa()"></div>
+							<select id="raportointihenkilostovalinta" class="valintakentta" onchange="raportointi_henkiloston_vaihto()">
+								<option value="-1" selected>Valitse henkilöstö</option>
+								<option value="0" class="raportointisijaisvalinta">Sissihoitajat</option>
+								<option value="1" class="raportointisijaisvalinta">Sissisihteerit</option>
+								<option value="2" class="raportointireservivalinta">Reserviläiset</option>
+								<option value="3" class="raportointisihteerivalinta">Vakituiset sihteerit</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div id="raportointi_valintanakyma">
+					<div id="raportointialueKehys" class="raportointi_valintakehys">
+						<span id="raportointialueTeksti" class="raportti_ruututeksti"></span>
+						<div id="raportointialuevalintakehys">
+							<input id="raportointivalitsealueet" type="checkbox" />
+							<span id="raportointikaikkialueetTeksti">Valitse kaikki</span>
+						</div>
+						<div id="raportointialuevalinnat" class="raportointi_tietovalinnat"></div>
+					</div>				
+					
+					<div id="raportointitaustaKehys" class="raportointi_valintakehys">
+						<span id="raportointitaustaTeksti" class="ruututeksti_pitka"></span>
+						<div id="raportointitaustavalintakehys">
+							<input id="raportointivalitsetaustat" type="checkbox" />
+							<span id="raportointikaikkitaustatTeksti">Valitse kaikki</span>
+						</div>
+						<div id="raportointitaustavalinnat" class="raportointi_tietovalinnat"></div>
+					</div>
+
+					<div id="raportointiosastoKehys" class="raportointi_valintakehys">
+						<span id="raportointiosastoTeksti" class="ruututeksti_pitka">Osastot</span>
+						<div id="raportointiosastovalintaKehys">
+							<input id="raportointivalitseosastot" type="checkbox" />
+							<span id="raportointivalitsekaikkiosastotTeksti">Valitse kaikki</span>
+						</div>
+						<div id="raportointiosastojarjestysKehys">
+							<span id="raportointiosastojarjestysvalintaTeksti">Järjestys</span>
+							<select id="raportointiosastojarjestysvalinta" class="raportointi_jarjestysvalinta valintakentta" onchange="raportointi_hae_osastot()">
+								<option value="toimialue-raporttinumero" class="raportointisijaisvalinta raportointireservivalinta">Toimialue/Nro</option>
+								<option value="toimialue-nimi" class="raportointisijaisvalinta raportointireservivalinta">Toimialue/Nimi</option>
+								<option value="palvelualue-raporttinumero" class="raportointisihteerivalinta">Palvelualue/Nro</option>
+								<option value="palvelualue-nimi" class="raportointisihteerivalinta">Palvelualue/Nimi</option>
+								<option value="nimi">Nimi</option>
+								<option value="raporttinumero">Raporttinumero</option>
+							</select>
+						</div>
+						<div id="raportointiosastovalinnat" class="raportointi_tietovalinnat"></div>
+					</div>
+
+					<div id="raportointihenkiloKehys" class="raportointi_valintakehys">
+						<span id="raportointihenkiloTeksti" class="ruututeksti_pitka">Henkilöt</span>
+						<div id="raportointihenkilovalintaKehys">
+							<input id="raportointivalitsehenkilot" type="checkbox" />
+							<span id="raportointikaikkihenkilotTeksti">Valitse kaikki</span>
+						</div>
+						<div id="raportointihenkilojarjestysKehys">
+							<span id="raportointihenkilovalintaTeksti">Järjestys</span>
+							<select id="raportointihenkiloarjestysvalinta" class="raportointi_jarjestysvalinta valintakentta" onchange="raportointi_hae_henkilot()">
+								<!--
+								<option value="toimialue-nimi" class="raportointisijaisvalinta raportointireservivalinta">Toimialue/Nimi</option>
+								<option value="palvelualue-nimi" class="raportointisihteerivalinta">Palvelualue/Nimi</option>
+								-->
+								<option value="nimi" selected>Nimi</option>
+							</select>
+						</div>
+						<div id="raportointihenkilovalinnat" class="raportointi_tietovalinnat"></div>
+					</div>
+				</div>
+					
+				<div id="raportointi_alanakyma">
+					<div id="raportointisiirtotiedostopainikkeetKehys">
+						<button id="raportointiladattavatsiirtotiedostotPainike" onclick="raportointi_nayta_ladattavat_siirtotiedostot_ruutu()" class="painike_suuri">Ladattavat siirtotiedostot</button>
+						<button id="raportointisiirtotiedostoPainike" class="painike_suuri" onclick="raportointi_nayta_siirtotiedosto_ruutu()">Siirtotiedoston luonti</button>
+					</div>
+					<button id="raportointiluoraporttiPainike" class="painike_suuri" onclick="raportointi_tarkista_raporttityyppi_toiminta()">Raportin luonti</button>
+				</div>
+
+				<div id="raportointisiirtotiedostoruutu">
+					<div id="raportointisiirtotiedostovuosikuukausiKehys">
+						<span class="ruututeksti_pitka">Kuukausi</span>
+						<div id="raportointisiirtotiedostovuosikuukausi"></div>
+					</div>
+					<div id="raportointisiirtotiedostotyyppiKehys">
+						<span class="ruututeksti_pitka">Tyyppi</span>
+						<select id="raportointisiirtotiedostovalinta" class="valintakentta" onchange="raportointi_hae_siirtotiedostot()">
+							<option value="-1" selected>Valitse</option>
+							<option value="0">Siirtotiedosto - Hoitajat</option>
+							<option value="1">Siirtotiedosto - Sihteerit</option>
+							<option value="2">Siirtotiedosto - Hoitaja matkat</option>
+							<option value="3">Siirtotiedosto - Sihteeri matkat</option>
+						</select>
+					</div>
+				</div>
+
+				<div id="raportointiladattavatsiirtotiedostotRuutu">
+					<div class="raportointisiirtotiedostoriviKehys">
+						<div id="raportointisiirtotiedostohoitajaKehys" class="raportointisiirtotiedostoKehys">
+							<span class="ruututeksti_pitka">Hoitajat</span>
+							<div id="raportointisiirtotiedostohoitajat" class="raportointisiirtotiedostovalinnat"></div>
+						</div>
+						<div id="raportointisiirtotiedostohoitajaKehys" class="raportointisiirtotiedostoKehys">
+							<span class="raportointisiirtotiedostoTeksti ruututeksti_pitka">Sihteerit</span>
+							<div id="raportointisiirtotiedostosihteerit" class="raportointisiirtotiedostovalinnat"></div>
+						</div>
+					</div>
+					<div class="raportointisiirtotiedostoriviKehys">
+						<div id="raportointisiirtotiedostohoitajaKehys" class="raportointisiirtotiedostoKehys">
+							<span class="ruututeksti_pitka">Hoitaja matkat</span>
+							<div id="raportointisiirtotiedostohoitajamatkat" class="raportointisiirtotiedostovalinnat"></div>
+						</div>
+						<div id="raportointisiirtotiedostohoitajaKehys" class="raportointisiirtotiedostoKehys">
+							<span class="raportointisiirtotiedostoTeksti ruututeksti_pitka">Sihteeri matkat</span>
+							<div id="raportointisiirtotiedostosihteerimatkat" class="raportointisiirtotiedostovalinnat"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="raportointiRuutu">
+					<span id="raportointiTeksti"></span>
+					<div id="raportointityhjavalintakehys">
+						<input id="raportointityhjavalinta" type="checkbox" />
+						<span id="raportointityhjavalintaTeksti">Näytä tyhjät rivit</span>
+					</div>
+					<image id="raportointilatauskuva" src="css/imgs/loader.gif" />
+				</div>
+
+				<div id="raportointisiirtotiedostovarmistusRuutu">
+					<span id="raportointisiirtotiedostoteksti"></span>
+					<h3>Huom! Tiedosto siirretään saataville 24 h sisään</h3>
+				</div>
+				
+				<form id="raporttitieto" action="php/luo_raportti.php" target="_blank" method="post" class="piilotettu">
+					<input id="raporttitieto_raporttityyppi" class="raporttikentta" name="raporttityyppi" />
+					<input id="raporttitieto_alkupvm" class="raporttikentta" name="alkupvm" />
+					<input id="raporttitieto_loppupvm" class="raporttikentta" name="loppupvm" />
+					<input id="raporttitieto_toimialue_idt" class="raporttikentta" name="toimialue_idt" />
+					<input id="raporttitieto_palvelualue_idt" class="raporttikentta" name="palvelualue_idt" />
+					<input id="raporttitieto_tausta_idt" class="raporttikentta" name="tausta_idt" />
+					<input id="raporttitieto_osasto_idt" class="raporttikentta" name="osasto_idt" />
+					<input id="raporttitieto_henkilo_idt" class="raporttikentta" name="henkilo_idt" />
+					<input id="raporttitieto_henkilosto" class="raporttikentta" name="henkilosto" />
+					<input id="raporttitieto_tyhjat" class="raporttikentta" name="tyhjat" />
+				</form>
+
+				<form id="raportointijarjestelmatieto" action="php/luo_jarjestelmaraportti.php" target="_blank" method="post" class="piilotettu">
+					<input id="raportointijarjestelmatieto_raporttityyppi" class="jarjestelmaraporttikentta" name="raporttityyppi" />
+				</form>
+			</div>
+			
+			<!-------- Viestintänäkymä ---------------------->
+			<div id="viestintanakyma" class="kehys">
+				<div id="viestintatoimialueKehys">
+					<div id="viestintatoimialuevalinnat"></div>
+				</div>
+				<div id="viestintasijaisKehys">
+					<span id="viestintasijaisTeksti">Tilapäiset sissit</span>
+					<div id="viestintasijaisvalinnat"></div>
+					<div id="viestintasijaisvalintakehys">
+						<input id="viestintavalitsesijaiset" type="checkbox" />
+						<span id="viestintavalitsesijaisetTeksti">Valitse kaikki</span>
+					</div>
+				</div>
+				<div id="viestintaviestiKehys">
+					<span id="viestintatekstiselite">Lähetä viesti valituille sijaisille</span>
+					<textarea id="viestintaviesti" maxlength="160"></textarea>
+					<span id="viestintaviestimerkit"></span>
+					<div class="viestintalahettajavalintakehys">
+						<input id="viestintalahettajavalinta_sairaala" class="viestintalahettajavalinta" type="checkbox" />
+						<span class="viestintalahettajavalintaTeksti">Lähettäjä:</span>
+						<span id="viestintalahettaja" class="viestintalahettajavalintaTeksti">Rekry</span> <!--- VAIHDETTAVISSA --->
+					</div>
+					<div class="viestintalahettajavalintakehys">
+						<input id="viestintalahettajavalinta_omanro" class="viestintalahettajavalinta" type="checkbox" />
+						<span class="viestintalahettajavalintaTeksti">Lähettäjä: </span>
+						<input id="viestintalahettajanumero" />
+					</div>
+					<button id="viestintalahetaPainike" onclick="viestinta_laheta_viesti()">Lähetä SMS</button>
+				</div>
+			</div>
+			
+			<!-------- Reservinäkymä -------------------->
+			<div id="reservinakyma" class="kehys">
+				<div id="reservi_ylanakyma">
+					<select id="reservitoimialuesuodatin" multiple class="valintakentta piilotettu"></select>
+					<div id="reservi_pvmnakyma">
+						<span class="reservi_ylanakyma_teksti">Ajanjakso:</span>
+						<input id="reservi_alku_pvm" class="pvm_kentta" readonly />
+						<span class="lihavoitu"> - </span>
+						<input id="reservi_loppu_pvm" class="pvm_kentta" readonly />
+					</div>
+					<div id="reservi_varoitusvalinta_kehys">
+						<input id="reservi_varoitusvalinta" type="checkbox" onclick="reservi_hae_reservilaiset()"/> 
+						<span>Vain aktiivisten jaksojen varoitukset</span>
+					</div>
+					<div id="reservitoimialuepikavalinnat"></div>
+				</div>	
+				
+				<div id="reservilistataulukehys" class="taulucontainer">
+					<table id="reservilistataulu">
+						<thead id="reservitauluotsikot">
+							<th><span id="reservi_maara">0 reserviläistä</span></th>
+							<th onclick="reservi_aseta_jarjestys('vakanssinumero')" class="teksti_keskella">Vakanssinumero</th>
+							<th onclick="reservi_aseta_jarjestys('nimi')" class="teksti_keskella">Nimi</th>
+							<th onclick="reservi_aseta_jarjestys('nimike')" class="teksti_keskella">Nimike</th>
+						</thead>
+						<tbody id="reservitauludata"></tbody>
+					</table>
+				</div>
+				
+				<div id="reservi_alanakyma">
+					<div id="reservi_hakunakyma">
+						<span class="reservi_ylanakyma_teksti">Reserviläishaku:</span>
+						<select id="reservi_reservilaishaku_haettavaarvo" class="valintakentta reservi_valinta">
+							<option value="vakanssinumero">Vakanssinumero</option>
+							<option value="nimi" selected>Nimi</option>
+							<option value="nimike">Nimike</option>
+						</select>
+						<input id="reservi_reservilaishaku_hakusana" />
+						<button id="reservi_reservilaishaku_painike" class="painike reservi_haku" onclick="reservi_hae_reservilaiset()">Hae</button>
+						<span class="reservi_alanakyma_teksti">Työjaksohaku:</span>
+						<select id="reservi_tyojaksohaku_haettavaarvo" class="valintakentta reservi_valinta">
+							<option value="osasto">Yksikkö</option>
+							<option value="prosentti">Työmäärä</option>
+							<option value="reservitausta">Reservitausta</option>
+							<option value="kommentti">Kommentti</option>
+						</select>
+						<input id="reservi_tyojaksohaku_hakusana" />
+						<button id="reservi_tyojaksohaku_painike" class="painike reservi_haku" onclick="reservi_hae_reservilaiset()">Hae</button>
+					</div>
+				</div>
+				
+				<div id="reservilatausRuutu">
+					<img src="css/imgs/loader.gif" class="latausanimaatio" />
+				</div>
+				
+				<div id="reservipoistoRuutu">
+					<span id="reservi_poisto_id" class="piilotettu"></span>
+					<span id="reservi_poisto_reservilainen_id" class="piilotettu"></span>
+					<span id="reservi_poisto_teksti"></span>
+				</div>
+			</div>
+			
+			<!-------- Sihteerinäkymä -------------------->
+			<div id="sihteerinakyma" class="kehys">
+				<div id="sihteeri_ylanakyma">
+					<select id="sihteeripalvelualuesuodatin" multiple class="valintakentta piilotettu"></select>
+					<div id="sihteeri_pvmnakyma">
+						<span class="sihteeri_ylanakyma_teksti">Ajanjakso:</span>
+						<input id="sihteeri_alku_pvm" class="pvm_kentta" readonly />
+						<span class="lihavoitu"> - </span>
+						<input id="sihteeri_loppu_pvm" class="pvm_kentta" readonly />
+					</div>
+					<div id="sihteeri_varoitusvalinta_kehys">
+						<input id="sihteeri_varoitusvalinta" type="checkbox" onclick="sihteeri_hae_sihteerit()"/> 
+						<span>Vain aktiivisten jaksojen varoitukset</span>
+					</div>
+					<div id="sihteeripalvelualuepikavalinnat"></div>
+				</div>	
+				
+				<div id="sihteerilistataulukehys" class="taulucontainer">
+					<table id="sihteerilistataulu">
+						<thead id="sihteeritauluotsikot">
+							<th><span id="sihteeri_maara">0 sihteeriä</span></th>
+							<th onclick="sihteeri_aseta_jarjestys('vakanssinumero')" class="teksti_keskella">Vakanssinumero</th>
+							<th onclick="sihteeri_aseta_jarjestys('nimi')" class="teksti_keskella">Nimi</th>
+							<th onclick="sihteeri_aseta_jarjestys('nimike')" class="teksti_keskella">Nimike</th>
+						</thead>
+						<tbody id="sihteeritauludata"></tbody>
+					</table>
+				</div>
+				
+				<div id="sihteeri_alanakyma">
+					<div id="sihteeri_hakunakyma">
+						<span class="sihteeri_ylanakyma_teksti">Sihteerihaku:</span>
+						<select id="sihteeri_sihteerihaku_haettavaarvo" class="valintakentta sihteeri_valinta">
+							<option value="vakanssinumero" class="sihteeri_vakituiset">Vakanssinumero</option>
+							<option value="nimi" selected>Nimi</option>
+							<option value="nimike">Nimike</option>
+						</select>
+						<input id="sihteeri_sihteerihaku_hakusana" />
+						<button id="sihteeri_sihteerihaku_painike" class="painike sihteeri_haku" onclick="sihteeri_hae_sihteerit()">Hae</button>
+						<span class="sihteeri_alanakyma_teksti">Työjaksohaku:</span>
+						<select id="sihteeri_tyojaksohaku_haettavaarvo" class="valintakentta sihteeri_valinta">
+							<option value="osasto">Osasto</option>
+							<option value="prosentti">Työmäärä</option>
+							<option value="tausta">Tausta</option>
+							<option value="kommentti">Kommentti</option>
+						</select>
+						<input id="sihteeri_tyojaksohaku_hakusana" />
+						<button id="sihteeri_tyojaksohaku_painike" class="painike sihteeri_haku" onclick="sihteeri_hae_sihteerit()">Hae</button>
+					</div>
+				</div>
+				
+				<div id="sihteerilatausRuutu">
+					<img src="css/imgs/loader.gif" class="latausanimaatio" />
+				</div>
+				
+				<div id="sihteeripoistoRuutu">
+					<span id="sihteeri_poisto_id" class="piilotettu"></span>
+					<span id="sihteeri_poisto_sihteeri_id" class="piilotettu"></span>
+					<span id="sihteeri_poisto_teksti"></span>
+				</div>
+			</div>
+
+			<!-------------------- Matkanäkymä --------------------------->
+			<div id="matkanakyma" class="kehys">
+				<div id="matka_ylanakyma">
+					<div id="matkatietokehys">
+						<span id="matka_sijainen"></span>
+						<span id="matka_sijainenid" class="piilotettu"></span>
+						<span id="matka_maara">Ei matkoja</span>
+					</div>
+					<div id="matkantoimintopainikekehys">
+						<button id="matka_uusi_matka" class="matkapainike" onclick="matka_nayta_tietoruutu('')">Uusi matka</button>
+						<button id="matka_nayta_lahetysruutu" class="matkapainike" onclick="matka_nayta_lahetysruutu()">Matkojen lähetys</button>
+						<button id="matka_nayta_raporttiruutu" class="matkapainike" onclick="matka_nayta_raporttiruutu()">Luo matkaraportti</button>
+					</div>
+					<span id="matka_km_yht">-</span>
+				</div>	
+				
+				<div id="matkataulukehys" class="taulucontainer">
+					<table id="matkataulu">
+						<thead id="matkatauluotsikot">
+							<th onclick="matka_aseta_jarjestys('pvm')" class="teksti_keskella">Päivämäärä</th>
+							<th onclick="matka_aseta_jarjestys('vuoro')" class="teksti_keskella">Vuoro</th>
+							<th onclick="matka_aseta_jarjestys('matka')" class="teksti_keskella">Matka</th>
+							<th onclick="matka_aseta_jarjestys('selite')" class="teksti_keskella">Selite</th>
+							<th onclick="matka_aseta_jarjestys('lahtoaika')" class="teksti_keskella">Lähtöaika</th>
+							<th onclick="matka_aseta_jarjestys('paluuaika')" class="teksti_keskella">Paluuaika</th>
+							<th onclick="matka_aseta_jarjestys('km')" class="teksti_keskella">Km</th>
+						</thead>
+						<tbody id="matkatauludata"></tbody>
+					</table>
+				</div>
+
+				<div id="matkapinRuutu">
+					<div class="rivikehys">
+						<span id="matkapinTeksti" class="matkakenttateksti">Pin:</span>
+						<input id="matkapin" type="password" class="ruutukentta" />
+					</div>
+				</div>
+
+				<div id="matkaTietoRuutu">
+					<div class="ruututausta">
+						<span id="matkaid" class="piilotettu"></span>
+						<span id="matkavuoroid" class="piilotettu"></span>
+						<div class="rivikehys">
+							<span id="matkavuoroTeksti" class="matkakenttateksti">Vuoro</span>
+							<input id="matkavuoropvm" class="piilotettu" />
+							<select id="matkavuoro">
+								<option value="-1">Valitse päivämäärä</option>
+							</select>
+							<span id="matkavuorotieto"></span>
+						</div>
+						<div class="rivikehys">
+							<span id="matkamatkaTeksti" class="matkakenttateksti">Matka</span>
+							<textarea id="matkamatka" ></textarea>
+						</div>
+						<div class="rivikehys">
+							<span id="matkaseliteTeksti" class="matkakenttateksti">Selite</span>
+							<textarea id="matkaselite" maxlength="90"></textarea>
+							<span id="matkaselitemerkkimaara">90</span>
+						</div>
+						<div class="rivikehys">
+							<span id="matkalahtoaikaTeksti" class="matkakenttateksti">Lähtöaika</span>
+							<input id="matkalahtoaika" type="time"/>
+						</div>
+						<div class="rivikehys">
+							<span id="matkapaluuaikaTeksti" class="matkakenttateksti">Paluuaika</span>
+							<input id="matkapaluuaika" type="time"/>
+						</div>
+						<div class="rivikehys">
+							<span id="matkakmTeksti" class="matkakenttateksti">Km yht.</span>
+							<input id="matkakm" type="number" min="0" max="9999" step="0.1" class="ruutukentta" />
+						</div>
+						<div class="rivikehys">
+							<span id="matkahuomautusteksti">Muista vähentää kodin ja kotiosaston välisen matkan kilometrit</span>
+						</div>
+					</div>
+				</div>
+
+				<div id="matkapoistoRuutu">
+					<span id="matka_poisto_id" class="piilotettu"></span>
+					<span id="matka_poisto_teksti"></span>
+				</div>
+
+				<div id="matkalahetysTietoRuutu">
+					<div class="ruututausta">
+						<div id="matkalahetys_pvmnakyma">
+							<span id="matkalahetys_pvmnakyma_teksti">Ajanjakso:</span>
+							<input id="matkalahetys_alku_pvm" class="pvm_kentta_levea" value="" readonly tabindex="-1" />
+							<span class="lihavoitu"> - </span>
+							<input id="matkalahetys_loppu_pvm" class="pvm_kentta_levea" value="" readonly tabindex="-1"/>
+							<button id="matkalahetys_matkahaku_painike" onclick="matka_hae_lahettavat_matkat()">Hae matkat</button>
+						</div>
+						<div id="matkavalintaKehys">
+							<input id="matkavalitsematkat" type="checkbox" />
+							<span id="matkavalitsekaikkimatkatTeksti">Valitse kaikki</span>
+						</div>
+						<div id="matkalahetysvalinnat"></div>
+					</div>
+				</div>
+
+				<div id="matkavahvistusRuutu">
+					<span id="matka_lahetys_teksti">Lähetetäänkö valitut matkat tarkistettavaksi ?</span>
+					<span id="matka_lahetyshuomio_teksti">!!! Matkoja ei voi enää muokata lähetyksen jälkeen !!!</span>
+				</div>
+
+				<div id="matkaraporttiRuutu">
+					<div class="ruututausta">
+						<div class="rivikehys">
+							<span class="ruututeksti_pitka">Ajanjakso</span>
+							<input id="matkaraportti_alku_pvm" class="pvm_kentta_levea" value="" readonly tabindex="-1"/>
+							<span class="lihavoitu"> - </span>
+							<input id="matkaraportti_loppu_pvm" class="pvm_kentta_levea" value="" readonly tabindex="-1"/>
+						</div>
+						<div class="rivikehys">
+							<span class="ruututeksti_pitka">Matkoja</span>
+							<span id="matka_hyvaksytty_matkamaara">- kpl</span>
+						</div>
+					</div>
+				</div>
+
+				<div id="matkalatausRuutu">
+					<img src="css/imgs/loader.gif" class="latausanimaatio" />
+				</div>
+
+				<form id="matkaraporttitieto" action="php/luo_matka_raportti.php" target="_blank" method="post" class="piilotettu">
+					<input id="matkaraportti_sijainen_id" class="matkaraporttikentta" name="sijainen_id" />
+					<input id="matkaraportti_alkupvm" class="matkaraporttikentta" name="alkupvm" />
+					<input id="matkaraportti_loppupvm" class="matkaraporttikentta" name="loppupvm" />
+				</form>
+			</div>
+
+			<!-------------------- Matkatarkistus --------------------------->
+			<div id="matkatarkistus" class="kehys">
+				<div id="matkatarkistus_ylanakyma">
+					<div id="matkatarkistusnakymapikavalinnat">
+						<button id="matkatarkistusnakymapikavalinta_hoitaja" class="painike pikavalintapainikkeet" onclick="matkatarkistus_vaihda_nakyma(1)">Hoitaja</button>
+						<button id="matkatarkistusnakymapikavalinta_sihteeri" class="painike pikavalintapainikkeet" onclick="matkatarkistus_vaihda_nakyma(0)">Sihteeri</button>
+					</div>
+					<select id="matkatarkistus_nakyma_suodatin" class="valintakentta piilotettu" onchange="matkatarkistus_hae_sijaisvalinnat()">
+						<option value="0" selected>Hoitajat</option>
+						<option value="1">Sihteerit</option>
+					</select>
+					<div id="matkatarkistus_tarkistettavatvalintaKehys">
+						<input id="matkatarkistus_tarkistettavat_valinta" type="checkbox" onclick="matkatarkistus_hae_sijaisvalinnat()" />
+						<span id="matkatarkistus_tarkistettavat_teksti">Vain tarkistettavat sijaiset</span>
+					</div>
+					<div id="matkatarkistustietokehys">
+						<select id="matkatarkistus_sijainen" class="valintakentta" onchange="matkatarkistus_aseta_sijainen()">
+							<option value="">Valitse sissi</option>
+						</select>
+						<span id="matkatarkistus_maara">-</span>
+					</div>
+					<div id="matkatarkistusntoimintopainikekehys">
+						<button id="matkatarkistu_tarkista_painike" class="matkatarkistus_painike" onclick="matkatarkistus_nayta_tarkistusruutu()">Matkojen tarkistus</button>
+						<button id="matkatarkistus_raportti_painike" class="matkatarkistus_painike" onclick="matkatarkistus_nayta_raporttiruutu()">Luo matkaraportti</button>
+					</div>
+					<span id="matkatarkistus_km_yht">-</span>
+				</div>	
+				
+				<div id="matkatarkistustaulukehys" class="taulucontainer">
+					<table id="matkatarkistustaulu">
+						<thead id="matkatarkistustauluotsikot">
+							<th onclick="matkatarkistus_aseta_jarjestys('pvm')" class="teksti_keskella">Päivämäärä</th>
+							<th onclick="matkatarkistus_aseta_jarjestys('vuoro')" class="teksti_keskella">Vuoro</th>
+							<th onclick="matkatarkistus_aseta_jarjestys('matka')" class="teksti_keskella">Matka</th>
+							<th onclick="matkatarkistus_aseta_jarjestys('selite')" class="teksti_keskella">Selite</th>
+							<th onclick="matkatarkistus_aseta_jarjestys('lahtoaika')" class="teksti_keskella">Lähtöaika</th>
+							<th onclick="matkatarkistus_aseta_jarjestys('paluuaika')" class="teksti_keskella">Paluuaika</th>
+							<th onclick="matkatarkistus_aseta_jarjestys('km')" class="teksti_keskella">Km</th>
+						</thead>
+						<tbody id="matkatarkistustauludata"></tbody>
+					</table>
+				</div>
+
+				<div id="matkatarkistus_alanakyma">
+					<select id="matkatarkistus_toimialue_suodatin" class="valintakentta piilotettu" multiple onchange="matkatarkistus_hae_sijaisvalinnat()"></select>
+					<div id="matkatarkistustoimialuepikavalinnat"></div>
+				</div>
+
+				<div id="matkatarkistusTietoRuutu">
+					<div class="ruututausta">
+						<div id="matkatarkistus_pvmnakyma">
+							<span id="matkatarkistus_pvmnakyma_teksti">Ajanjakso:</span>
+							<input id="matkatarkistus_alku_pvm" class="pvm_kentta_levea" value="" readonly tabindex="-1"/>
+							<span class="lihavoitu"> - </span>
+							<input id="matkatarkistus_loppu_pvm" class="pvm_kentta_levea" value="" readonly tabindex="-1"/>
+							<button id="matkatarkistus_matkahaku_painike" onclick="matkatarkistus_hae_tarkistettavat_matkat()">Hae matkat</button>
+						</div>
+						<div id="matkatarkistus_painikekehys">
+							<button id="matkatarkistus_palautakaikki_painike" onclick="matkatarkistus_palauta_kaikki()">Palauta kaikki</button>
+							<button id="matkatarkistus_hyvaksykaikki_painike" onclick="matkatarkistus_hyvaksy_kaikki()">Hyväksy kaikki</button>
+						</div>
+					
+						<div id="matkatarkistusvalinnat"></div>
+					</div>
+				</div>
+
+				<div id="matkatarkistusvahvistusRuutu">
+					<span id="matkatarkistus_yhteenveto"></span>
+					<span id="matkatarkistus_huomio_teksti">!!! Hyväksyttyjä matkoja ei voi enää muokata !!!</span>
+				</div>
+
+				<div id="matkatarkistusraporttiRuutu">
+					<div class="ruututausta">
+						<div class="rivikehys">
+							<span class="ruututeksti_pitka">Ajanjakso</span>
+							<input id="matkatarkistusraportti_alku_pvm" class="pvm_kentta_levea" value="" readonly tabindex="-1"/>
+							<span class="lihavoitu"> - </span>
+							<input id="matkatarkistusraportti_loppu_pvm" class="pvm_kentta_levea" value="" readonly tabindex="-1"/>
+						</div>
+						<div class="rivikehys">
+							<span class="ruututeksti_pitka">Matkoja</span>
+							<span id="matkatarkistus_hyvaksytty_matkamaara">- kpl</span>
+						</div>
+					</div>
+				</div>
+
+				<div id="matkatarkistuslatausRuutu">
+					<img src="css/imgs/loader.gif" class="latausanimaatio" />
+				</div>
+
+				<form id="matkatarkistusraporttitieto" action="php/luo_matka_raportti.php" target="_blank" method="post" class="piilotettu">
+					<input id="matkatarkistusraportti_sijainen_id" class="matkatarkistusraporttikentta" name="sijainen_id" />
+					<input id="matkatarkistusraportti_alkupvm" class="matkatarkistusraporttikentta" name="alkupvm" />
+					<input id="matkatarkistusraportti_loppupvm" class="matkatarkistusraporttikentta" name="loppupvm" />
+				</form>
+			</div>
+			
+			<!-------- Sisalto alanäkymä -------------------->
+
+			<div id="ala_nakyma">
+				<img id="logo_asiakas" src="css/imgs/logo_soite.png" />
+				<span id="tilaTeksti"></span>
+			</div>
+		</div>
+		
+		<!------------------------- Latausnakyma ------------------------------>
+		<div id="latausnakyma">
+			<div id="latauskuvat">
+				<image id="logokuva" src="css/imgs/taustakuva.png" />
+				<image id="latauskuva" src="css/imgs/loading.gif" />
+			</div>
+			<span id="sovellusinfoTeksti"></span>
+		</div>
+		<!------------------------ Värivalikoija ------------------------------>
+		<div class="varikehys piilotettu">
+			<div class="varikarttakehys">
+				<div class="varikartta_indikaattori">
+					<div class="varikartta_indikaattori_reuna"></div>
+				</div>
+			</div>
+			<div class="varikaistakehys">
+				<div class="varikaista_indikaattori">
+					<div class="varikaista_indikaattori_reuna"></div>
+				</div>
+			</div>
+		</div>
+		<!--------------------------------------------------------------------->
+		<div class="dhx_year_tooltip piilotettu"></div>
+	</body>
+</html>
