@@ -16012,7 +16012,7 @@ function reservi_tallenna_tyojakso(tj_reservilainen_id, tj_tyojakso_id) {
 		tj_osasto_id == 0 ||
 		tj_alku_pvm == "" ||
 		tj_loppu_pvm == "" ||
-		isNaN(parseFloat(tj_ty)) ||
+		isNaN(parseFloat(tj_tyomaara)) ||
 		tj_tyomaara <= 0 ||
 		tj_reservitausta_id == 0
 	) {
