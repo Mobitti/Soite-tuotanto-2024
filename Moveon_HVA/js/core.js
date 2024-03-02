@@ -15402,7 +15402,7 @@ function hae_reservilaisen_tyojaksot(re_reservilainen_id) {
 			"' class='pvm_kentta' readonly /></td>" +
 			"<td class='teksti_keskella'><input id='reservi_tyomaara_lisaysrivi_" +
 			re_reservilainen_id +
-			"' title='Työmäärä %' /></td>" +
+			"' title='Työmäärä %' style='text-align:right'/><span style='color:black; margin-left:5px'>%</span></td>" +
 			"<td class='teksti_keskella'><select id='reservi_reservitausta_lisaysrivi_" +
 			re_reservilainen_id +
 			"' title='Reservitausta' class='valintakentta reservi_valinta'></select></td>" +
@@ -15703,7 +15703,7 @@ function hae_reservilaisen_tyojaksot(re_reservilainen_id) {
 								"' class='pvm_kentta' readonly /></td>" +
 								"<td class='teksti_keskella'><input id='reservi_tyomaara_" +
 								id +
-								"' title='Työmäärä %' /></td>" +
+								"' title='Työmäärä %' style='text-align: right'/><span style='color:black; margin-left:5px'>%</span></td>" +
 								"<td class='teksti_keskella'><select id='reservi_reservitausta_" +
 								id +
 								"' title='Reservitausta' class='valintakentta reservi_valinta'></select></td>" +
