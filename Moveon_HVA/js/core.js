@@ -15701,9 +15701,9 @@ function hae_reservilaisen_tyojaksot(re_reservilainen_id) {
 								"<td class='teksti_keskella'><input id='reservi_loppu_pvm_" +
 								id +
 								"' class='pvm_kentta' readonly /></td>" +
-								"<td class='teksti_keskella'><select id='reservi_tyomaara_" +
+								"<td class='teksti_keskella'><input id='reservi_tyomaara_" +
 								id +
-								"' title='Työmäärä %' class='valintakentta reservi_valinta'></select></td>" +
+								"' title='Työmäärä %' /></td>" +
 								"<td class='teksti_keskella'><select id='reservi_reservitausta_" +
 								id +
 								"' title='Reservitausta' class='valintakentta reservi_valinta'></select></td>" +
@@ -15861,9 +15861,7 @@ function hae_reservilaisen_tyojaksot(re_reservilainen_id) {
 								replyObj[i].loppu_pvm
 							);
 
-							$("#reservi_tyomaara_" + id).html("");
-							$("#reservi_tyomaara_" + id).append(reservi_tyomaara_valinnat);
-							$("#reservi_tyomaara_" + id).val(replyObj[i].tyomaara_id);
+							$("#reservi_tyomaara_" + id).val(replyObj[i].tyomaara);
 							$("#reservi_tyomaara_" + id).change(function () {
 								if (
 									!$(
